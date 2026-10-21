@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kit de Skills do Claude para Gestores de Tráfego — The Mont .HUB</title>
+<meta name="description" content="30 Skills prontas para Claude.ai, Claude Desktop ou Claude Code: relatório, auditoria, estrutura de campanha, criativo e tracking de Meta Ads. R$47, pagamento único.">
+<style>
+  :root{
+    --bg: #0b0f14;
+    --bg-panel: #131a22;
+    --bg-panel-alt: #0f151c;
+    --border: #232e3a;
+    --text: #e7edf3;
+    --text-dim: #9fb0c0;
+    --text-dimmer: #6c7e90;
+    --accent: #f5a623;
+    --accent-dim: #c9841a;
+    --accent-soft: rgba(245,166,35,0.12);
+    --good: #4fd1a5;
+    --radius: 10px;
+    --maxw: 760px;
+  }
+  *{ box-sizing: border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; }
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  section{ padding: 48px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type{ border-bottom: none; }
+  h1,h2,h3{ line-height: 1.25; margin: 0 0 16px; }
+  h1{ font-size: 1.9rem; letter-spacing: -0.01em; }
+  h2{ font-size: 1.45rem; color: var(--text); }
+  h3{ font-size: 1.1rem; color: var(--text); margin-bottom: 8px; }
+  p{ margin: 0 0 16px; color: var(--text-dim); }
+  strong{ color: var(--text); }
+  .eyebrow{
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+  }
+  ul{ padding-left: 0; margin: 0 0 16px; list-style: none; }
+  li{ padding-left: 26px; position: relative; margin-bottom: 10px; color: var(--text-dim); }
+  li::before{
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .check-list li::before{ content: "✓"; color: var(--good); }
+  .btn-primary{
+    display: inline-block;
+    background: var(--accent);
+    color: #1a1200;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    padding: 16px 28px;
+    border-radius: var(--radius);
+    text-align: center;
+    width: 100%;
+    transition: transform 0.1s ease, background 0.15s ease;
+  }
+  .btn-primary:hover{ background: #ffb84d; }
+  .btn-primary:active{ transform: scale(0.98); }
+  .btn-sub{
+    text-align: center;
+    color: var(--text-dimmer);
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+  .hero{
+    padding-top: 56px;
+    text-align: left;
+  }
+  .hero .headline-alt{
+    color: var(--text-dimmer);
+    font-size: 0.85rem;
+    margin-top: 28px;
+    border-top: 1px dashed var(--border);
+    padding-top: 14px;
+  }
+  .card{
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media(min-width: 640px){
+    .grid-2{ grid-template-columns: 1fr 1fr; }
+  }
+  .cat-card h3{ color: var(--accent); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.03em; }
+  .cat-card ol{ margin: 0; padding-left: 20px; color: var(--text-dim); font-size: 0.92rem; }
+  .cat-card li{ padding-left: 0; margin-bottom: 4px; }
+  .cat-card li::before{ content: none; }
+  .placeholder-box{
+    background: var(--bg-panel-alt);
+    border: 1px dashed var(--accent-dim);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 0.9rem;
+    color: var(--text-dimmer);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .price-box{
+    background: var(--bg-panel);
+    border: 1px solid var(--accent-dim);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .price{
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin: 6px 0;
+  }
+  .price-sub{ color: var(--text-dimmer); font-size: 0.85rem; margin-bottom: 20px; }
+  .faq-item{ margin-bottom: 18px; }
+  .faq-item h3{ font-size: 1rem; color: var(--text); }
+  .faq-item p{ margin-bottom: 0; }
+  .objection{ margin-bottom: 18px; }
+  .objection .q{ color: var(--text); font-weight: 600; margin-bottom: 4px; }
+  .objection .q::before{ content: "“"; color: var(--accent-dim); }
+  .objection .q::after{ content: "”"; color: var(--accent-dim); }
+  .guarantee-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-dim);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  footer{
+    text-align: center;
+    padding: 32px 0 48px;
+    color: var(--text-dimmer);
+    font-size: 0.85rem;
+  }
+  footer .brand{ color: var(--text-dim); font-weight: 600; }
+  .ps{
+    background: var(--bg-panel);
+    border-left: 3px solid var(--accent);
+    padding: 16px 18px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.95rem;
+  }
+  .ps p{ margin-bottom: 8px; color: var(--text-dim); }
+  .ps p:last-child{ margin-bottom: 0; }
+  @media(min-width: 768px){
+    h1{ font-size: 2.4rem; }
+    h2{ font-size: 1.7rem; }
+    section{ padding: 64px 0; }
+    .btn-primary{ width: auto; min-width: 280px; }
+    .btn-primary-wrap{ text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Kit de Skills para Claude · Gestores de Tráfego</span>
+    <h1>30 Skills do Claude que fazem o trabalho de gestor de tráfego sair pronto</h1>
+    <p style="font-size:1.05rem; color: var(--text-dim);">30 Skills prontas para Claude.ai, Claude Desktop ou Claude Code: relatório, auditoria, estrutura de campanha, criativo e tracking — por R$47, pagamento único.</p>
+
+    <div class="btn-primary-wrap">
+      <!-- TODO: trocar pelo link de checkout da Kiwify assim que o produto for finalizado -->
+      <a href="#checkout" class="btn-primary">Quero o Kit por R$47</a>
+      <div class="btn-sub">Pagamento único · Acesso imediato · Garantia de 7 dias</div>
+    </div>
+
+    <div class="headline-alt">
+      Também testamos: <em>"Pare de escrever prompt do zero toda vez que precisa de um relatório"</em> e <em>"O kit de Skills que um gestor de tráfego de verdade usa nas contas dos próprios clientes"</em>.
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABERTURA ============ -->
+<section>
+  <div class="wrap">
+    <p>Você já sabe estruturar uma campanha, auditar uma conta e escrever um relatório que faça sentido pro cliente. O problema não é falta de competência — é que, toda vez que abre o Claude pra fazer isso, você reexplica o contexto do zero: o que é uma boa taxa de conversão pra infoproduto, como você organiza uma auditoria, o que não pode faltar numa subida de campanha.</p>
+    <p>Esse kit resolve exatamente essa parte. São 30 Skills — arquivos que ensinam o Claude a trabalhar do jeito que um gestor de tráfego de verdade trabalha, sem você montar o prompt de novo a cada conta, a cada cliente, a cada relatório de segunda-feira.</p>
+    <p>Não é um pacote genérico de "prompts de IA para marketing". Foi construído em cima da rotina real de quem roda tráfego pra infoproduto, WhatsApp e geração de leads todos os dias — e usa essas mesmas lógicas nas contas dos próprios clientes.</p>
+  </div>
+</section>
+
+<!-- ============ 5. DOR ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">O problema</span>
+    <h2>O gargalo não é saber gestão de tráfego. É repetir o trabalho de explicar gestão de tráfego pra uma IA.</h2>
+    <p>Toda vez que você abre uma nova conversa no Claude pra pedir um relatório, uma auditoria ou ajuda pra subir uma campanha, você começa do zero: explica o contexto da conta, o que considera "bom" CPL ou ROAS no seu nicho, como formata a entrega pro cliente. Isso consome tempo que devia ir pra análise, não pra engenharia de prompt.</p>
+    <ul>
+      <li>Você escreve o mesmo prompt gigante de novo a cada relatório, só trocando o nome do cliente.</li>
+      <li>O Claude responde genérico porque não sabe o que é "bom" pra Meta Ads, CTWA ou geração de leads no seu padrão.</li>
+      <li>Auditoria de conta vira checklist mental — e sempre esquece algum ponto quando a conta é grande.</li>
+      <li>Briefing de criativo, roteiro e copy saem soltos, sem padrão entre um anúncio e outro.</li>
+      <li>Checklist de Pixel e API de Conversões é feito "de memória", e só se descobre o furo quando o CPA já subiu.</li>
+      <li>Fica o medo de pedir pra IA ajudar na subida de campanha e ela mexer em algo que não devia, sem revisão.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 6. SOLUÇÃO ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">A solução</span>
+    <h2>30 Skills que carregam o contexto pra você — uma vez só, dentro do Claude</h2>
+    <p>Uma Skill é um arquivo (SKILL.md) que o Claude lê antes de responder. Em vez de você explicar de novo "como eu gosto que um relatório seja feito" ou "quais os 15 pontos de uma auditoria de conta", a Skill já carrega isso. Você só pede — "roda a auditoria de 15 pontos nessa conta" ou "monta o relatório semanal do CTWA" — e o Claude já sabe o padrão a seguir.</p>
+    <p>O kit tem 30 Skills organizadas em 6 categorias, cobrindo todo o ciclo de trabalho de um gestor de tráfego: relatório, auditoria, estrutura e subida de campanha, criativo, tracking (Pixel/CAPI) e operação de agência com regras de decisão. Cada Skill funciona de dois jeitos: conectado ao conector oficial de Anúncios da Meta no Claude (ele lê os dados direto) ou no modo manual, colando números e prints — pra quem não usa ou não pode usar o conector.</p>
+  </div>
+</section>
+
+<!-- ============ 7. BENEFÍCIOS ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Na prática, isso significa</span>
+    <h2>O que muda no seu dia a dia</h2>
+    <ul class="check-list">
+      <li>Você não reexplica contexto da conta toda vez que abre uma conversa nova com o Claude.</li>
+      <li>O relatório pro cliente sai no mesmo padrão todas as semanas, em todas as contas — sem você reformatar nada à mão.</li>
+      <li>A auditoria de conta não depende da sua memória: os 15 pontos são checados sempre, mesmo em dia cheio.</li>
+      <li>Você sobe campanha com um checklist anti-erro aplicado automaticamente, e ela nasce pausada — dá pra revisar antes de qualquer centavo rodar.</li>
+      <li>Briefing, roteiro e copy de criativo saem com a mesma estrutura, então fica mais fácil comparar o que funciona.</li>
+      <li>Você fecha o buraco mais caro de qualquer conta — tracking mal configurado — com um checklist de Pixel e API de Conversões, antes de escalar.</li>
+      <li>As decisões de pausar, escalar, testar A/B ou ajustar por sazonalidade seguem um critério definido, não "feeling" do dia.</li>
+      <li>Em agência com mais de uma conta, a operação fica padronizada entre contas e entre pessoas da equipe.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ O QUE ESTÁ DENTRO ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Estrutura do kit</span>
+    <h2>30 Skills, em 6 pastas por categoria</h2>
+    <div class="grid">
+      <div class="card cat-card">
+        <h3>A. Diagnóstico e relatórios (6)</h3>
+        <ol>
+          <li>relatorio-infoproduto</li>
+          <li>relatorio-whatsapp-ctwa</li>
+          <li>relatorio-leads-formulario</li>
+          <li>auditoria-conta-meta (15 pontos)</li>
+          <li>diagnostico-queda-performance</li>
+          <li>resumo-whatsapp-cliente</li>
+        </ol>
+      </div>
+      <div class="card cat-card">
+        <h3>B. Estrutura e subida de campanha (6)</h3>
+        <ol>
+          <li>estrutura-campanha-infoproduto</li>
+          <li>estrutura-campanha-ctwa-local</li>
+          <li>estrutura-campanha-leads</li>
+          <li>publicos-e-posicionamentos</li>
+          <li>orcamento-e-escala</li>
+          <li>checklist-pre-publicacao</li>
+        </ol>
+      </div>
+      <div class="card cat-card">
+        <h3>C. Criativos e copy (7)</h3>
+        <ol>
+          <li>briefing-criativo</li>
+          <li>roteiros-reels-ugc</li>
+          <li>copy-anuncio-3-variacoes</li>
+          <li>hooks-por-nicho</li>
+          <li>analise-de-criativos</li>
+          <li>angulos-por-nicho</li>
+          <li>roteiro-captacao-cliente</li>
+        </ol>
+      </div>
+      <div class="card cat-card">
+        <h3>D. Tracking (4)</h3>
+        <ol>
+          <li>pixel-e-capi-checklist</li>
+          <li>utms-padrao-agencia</li>
+          <li>diagnostico-de-eventos</li>
+          <li>qa-landing-page</li>
+        </ol>
+      </div>
+      <div class="card cat-card">
+        <h3>E. Operação de agência (4)</h3>
+        <ol>
+          <li>onboarding-cliente-trafego</li>
+          <li>reuniao-mensal-cliente</li>
+          <li>rotina-diaria-otimizacao</li>
+          <li>reajuste-de-verba-e-proposta</li>
+        </ol>
+      </div>
+      <div class="card cat-card">
+        <h3>F. Decisão e escala (3)</h3>
+        <ol>
+          <li>regras-pausar-escalar</li>
+          <li>teste-ab-estruturado</li>
+          <li>plano-sazonal-black-friday</li>
+        </ol>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size:0.9rem;">Skills de análise são só leitura — nunca alteram nada na conta. Skills de subida de campanha só criam campanha <strong>pausada</strong>, pra você revisar antes de ativar.</p>
+  </div>
+</section>
+
+<!-- ============ 8. PROVA SOCIAL ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Sobre prova social</span>
+    <h2>Esse produto está lançando agora. Ainda não tem depoimento — e não vamos inventar um.</h2>
+    <p>Prefiro ser direto: não tem número de resultado, cliente satisfeito ou print de faturamento pra mostrar aqui, porque o kit ainda não foi vendido pra ninguém. Qualquer página que mostra isso num produto recém-lançado está inventando.</p>
+    <div class="placeholder-box">[PROVA REAL: espaço reservado para depoimentos, prints de uso e resultados de quem comprou — será preenchido conforme forem surgindo, sem inventar número]</div>
+    <p style="margin-top:16px;">Em vez de prova social, o que dá pra mostrar agora é a estrutura real do kit: as 30 Skills, organizadas, com exemplo de entrada e saída por categoria — pra você julgar pelo conteúdo, não por quem já usou. É o que está na seção acima e no guia de início rápido que vem na entrega.</p>
+  </div>
+</section>
+
+<!-- ============ 9. OFERTA ============ -->
+<section id="oferta">
+  <div class="wrap">
+    <span class="eyebrow">O que você recebe</span>
+    <h2>Tudo incluso, por um preço só</h2>
+    <div class="grid" style="margin-bottom:20px;">
+      <div class="card">
+        <h3>30 Skills em 6 pastas por categoria</h3>
+        <p style="margin-bottom:0;">Arquivos SKILL.md prontos pra usar no Claude.ai, Claude Desktop ou Claude Code.</p>
+      </div>
+      <div class="card">
+        <h3>README com instalação em 3 passos</h3>
+        <p style="margin-bottom:0;">Sem enrolação técnica — de onde salvar o arquivo até o primeiro teste.</p>
+      </div>
+      <div class="card">
+        <h3>Guia de início rápido</h3>
+        <p style="margin-bottom:0;">As 5 primeiras Skills pra testar e já sentir o kit funcionando na sua conta.</p>
+      </div>
+      <div class="card">
+        <h3>Exemplos de entrada e saída</h3>
+        <p style="margin-bottom:0;">Um exemplo por categoria, mostrando o que você pede e o que o Claude entrega.</p>
+      </div>
+    </div>
+    <div class="price-box" id="checkout">
+      <div class="price-sub">Acesso completo ao kit</div>
+      <div class="price">R$47</div>
+      <div class="price-sub">Pagamento único · Sem mensalidade · Entrega via Kiwify</div>
+      <!-- TODO: trocar pelo link de checkout da Kiwify assim que o produto for finalizado -->
+      <a href="#checkout" class="btn-primary">Quero o Kit por R$47</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. QUEBRA DE OBJEÇÕES ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Antes de decidir</span>
+    <h2>Perguntas que você provavelmente está se fazendo</h2>
+
+    <div class="objection">
+      <div class="q">Não sei usar Claude, vou conseguir instalar isso?</div>
+      <p>O kit vem com um README de instalação em 3 passos e um guia de início rápido com as 5 primeiras Skills pra você testar. Não precisa saber programar — só copiar o arquivo pro lugar certo e pedir pro Claude usar a Skill.</p>
+    </div>
+    <div class="objection">
+      <div class="q">Já tenho minhas próprias Skills ou prompts, pra que preciso disso?</div>
+      <p>Se o que você já tem resolve, ótimo — use. Esse kit é pra quem ainda reexplica contexto do zero ou quer uma estrutura testada em vez de montar as 30 peças sozinho. Também dá pra usar como ponto de partida e ajustar pro seu jeito.</p>
+    </div>
+    <div class="objection">
+      <div class="q">Tenho medo da IA fazer besteira na conta do cliente.</div>
+      <p>As Skills de análise (relatório, auditoria) são só leitura — nunca alteram nada na conta. As Skills de subida de campanha só criam a campanha <strong>pausada</strong>: nada vai ao ar sem você revisar e ativar manualmente.</p>
+    </div>
+    <div class="objection">
+      <div class="q">É genérico, igual os outros pacotes de prompt de IA que vejo por aí?</div>
+      <p>Não. Foi feito por quem roda tráfego pra infoproduto, WhatsApp e leads nas contas dos próprios clientes, hoje — as lógicas de auditoria, decisão e checklist são as mesmas usadas nessas contas reais, não um template genérico de marketing.</p>
+    </div>
+    <div class="objection">
+      <div class="q">E se eu comprar e não gostar?</div>
+      <p>Você tem 7 dias de garantia incondicional pelo Kiwify. Pede o reembolso e recebe de volta, sem precisar justificar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. GARANTIA ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Garantia</span>
+    <div class="guarantee-badge">🛡 Garantia incondicional de 7 dias</div>
+    <h2>Se não for pra você, devolvemos o valor.</h2>
+    <p>Você tem 7 dias corridos a partir da compra pra testar o kit. Se achar que não serve pro seu jeito de trabalhar, pede o reembolso direto na plataforma da Kiwify — processo simples, sem formulário longo e sem precisar justificar o motivo. É assim que vendemos: sem letra miúda.</p>
+  </div>
+</section>
+
+<!-- ============ 12. URGÊNCIA / TRANSPARÊNCIA SOBRE OFERTA ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Sobre prazo e vagas</span>
+    <h2>Não tem contagem regressiva, nem "últimas vagas" — porque não existe nenhuma das duas.</h2>
+    <p>Esse kit é um produto digital, entregue automaticamente pela Kiwify. Não tem lote limitado, não tem prazo de abertura e fechamento de carrinho, e qualquer selo de urgência aqui seria só pressão artificial. O motivo real pra decidir agora, se for o caso, é bem mais simples: o preço é R$47, a garantia é de 7 dias, e se não servir você tem o dinheiro de volta sem burocracia. Não tem risco em testar — só o custo de continuar reexplicando contexto pro Claude toda vez que abre uma conversa nova.</p>
+  </div>
+</section>
+
+<!-- ============ 13. FAQ ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>Perguntas frequentes</h2>
+
+    <div class="faq-item">
+      <h3>Preciso saber programar ou entender de IA pra usar?</h3>
+      <p>Não. O README explica a instalação em 3 passos, e as Skills são usadas com pedidos em português normal, como "roda a auditoria de 15 pontos nessa conta".</p>
+    </div>
+    <div class="faq-item">
+      <h3>As Skills funcionam em qualquer versão do Claude?</h3>
+      <p>Sim — funcionam no Claude.ai, no Claude Desktop e no Claude Code. A forma de instalar o arquivo pode variar levemente entre eles, e isso está explicado no README.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Preciso ter o conector da Meta conectado ao Claude?</h3>
+      <p>Não é obrigatório. Cada Skill funciona de dois jeitos: com o conector oficial de Anúncios da Meta conectado (lê os dados direto da conta) ou no modo manual, colando números e prints.</p>
+    </div>
+    <div class="faq-item">
+      <h3>As Skills podem alterar algo na conta de anúncios sem eu autorizar?</h3>
+      <p>As Skills de análise são só leitura. As de subida de campanha só criam campanha pausada — nada roda sem você revisar e ativar manualmente.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Funciona só pra infoproduto ou serve pra outros nichos?</h3>
+      <p>O kit foi desenhado em cima dos três cenários mais comuns pra quem gerencia tráfego hoje: infoproduto, WhatsApp/CTWA e geração de leads. As Skills de auditoria, estrutura, criativo e tracking servem pra qualquer conta que roda Meta Ads nesses formatos.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Como recebo o produto depois da compra?</h3>
+      <p>Você recebe um zip com as 30 Skills organizadas em 6 pastas, o README de instalação, o guia de início rápido e os exemplos de entrada/saída — entregue automaticamente pela Kiwify após a confirmação do pagamento.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Tem algum tipo de mensalidade ou taxa recorrente?</h3>
+      <p>Não. É pagamento único de R$47. O que você recebe é seu, sem assinatura.</p>
+    </div>
+    <div class="faq-item">
+      <h3>E se eu não gostar ou achar que não serve pra mim?</h3>
+      <p>Você tem 7 dias de garantia incondicional. Pede reembolso pela Kiwify e recebe o valor de volta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14. CTA FINAL ============ -->
+<section>
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Pra fechar</span>
+    <h2>30 Skills, estrutura testada, R$47, garantia de 7 dias.</h2>
+    <p>Se você já roda tráfego e está cansado de reexplicar contexto pro Claude toda vez que precisa de um relatório, uma auditoria ou ajuda pra subir campanha, o kit resolve isso agora.</p>
+    <!-- TODO: trocar pelo link de checkout da Kiwify assim que o produto for finalizado -->
+    <a href="#checkout" class="btn-primary">Quero o Kit por R$47</a>
+    <div class="btn-sub">Pagamento único · Acesso imediato · Garantia de 7 dias</div>
+  </div>
+</section>
+
+<!-- ============ 15. PS ============ -->
+<section>
+  <div class="wrap">
+    <div class="ps">
+      <p><strong>PS:</strong> esse kit não tem depoimento de cliente porque ainda não vendeu pra ninguém — e preferi te mostrar isso de forma direta em vez de forjar prova social. O que você está julgando é o conteúdo: 30 Skills, estrutura por categoria, exemplo de entrada e saída. Se fizer sentido pro seu dia a dia, você tem 7 dias pra confirmar, com reembolso garantido se não servir.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="brand">Um produto The Mont .HUB</p>
+    <p>Kit de Skills do Claude para Gestores de Tráfego — por Wandey Montenegro (The Mont)</p>
+  </div>
+</footer>
+
+</body>
+</html>
