@@ -10,102 +10,116 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#06090d; --panel:#0e141b; --panel-2:#131a23; --line:#232d3a;
-  --text:#eef2f6; --muted:#93a3b5; --muted-2:#5e6d7e;
-  --gold:#f5a623; --gold-soft:rgba(245,166,35,.12); --gold-dim:#c9841a;
-  --good:#4fd1a5; --warn:#e8795a;
+  --paper:#FFFFFF; --surface:#F5F4F2; --surface-2:#ECEAE6; --line:#E3DFD9;
+  --ink:#000000; --text:#000000; --muted:#5E5850; --muted-2:#8A8074;
+  --bronze-900:#23170B; --bronze-700:#3B2911; --bronze:#8C5E26;
+  --gold:#C9954F; --gold-soft:#F4EADC; --gold-dim:#A9783C;
+  --good:#2F7D4F; --warn:#B4541F;
+  --code-bg:#0A0705; --code-text:#EDE3D5;
   --display:"Archivo Black","Arial Black",sans-serif;
   --body:"Sora",-apple-system,"Segoe UI",Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
-  --maxw:1060px;
+  --maxw:1040px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:74px}
+body{margin:0;background:var(--paper);color:var(--text);font-family:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:74px}
 img,svg{max-width:100%;display:block}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-section{padding:64px 0}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:68px 0}
 .sec-line{border-top:1px solid var(--line)}
 h1,h2,h3{line-height:1.15;margin:0 0 14px;font-weight:700}
-h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,50px);letter-spacing:-.01em;line-height:1.08}
-h2{font-family:var(--display);font-weight:400;font-size:clamp(23px,3vw,34px);letter-spacing:-.005em}
-h3{font-size:1.05rem}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,50px);letter-spacing:-.01em;line-height:1.05;color:#fff}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(23px,3vw,33px);letter-spacing:-.005em}
+h3{font-size:1.03rem}
 p{margin:0 0 14px;color:var(--muted)}
 strong{color:var(--text)}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;font-size:.72rem;letter-spacing:.09em;color:var(--gold);font-weight:700;margin-bottom:14px}
-.eyebrow::before{content:"";width:16px;height:2px;background:var(--gold);display:inline-block}
-.lede{font-size:1.1rem;color:var(--muted);max-width:60ch}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;color:var(--bronze);font-weight:700;margin-bottom:10px}
+.eyebrow::before{content:"";width:16px;height:2px;background:var(--bronze);display:inline-block}
+.lede{font-size:1.08rem;color:var(--muted);max-width:62ch}
 ul.clean{list-style:none;margin:0;padding:0}
+.g{border-bottom:1.5px dashed var(--gold);font-weight:600}
+
+/* manual-style section header with number */
+.section-head{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;margin-bottom:8px}
+.section-head .n{font-family:var(--display);font-size:14px;color:var(--bronze);border-top:2px solid var(--bronze);padding-top:7px}
+.section-head .n.alt{color:#CFC6BA;border-top-color:#3a2b1a}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:17px 30px;font-weight:700;font-size:1.02rem;font-family:var(--body);text-decoration:none;cursor:pointer;background:linear-gradient(180deg,#ffc155,var(--gold));color:#1a1200;box-shadow:0 14px 30px -12px rgba(245,166,35,.55);transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translateY(-1px);box-shadow:0 18px 36px -12px rgba(245,166,35,.7)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:4px;padding:17px 30px;font-weight:700;font-size:1rem;font-family:var(--body);text-decoration:none;cursor:pointer;background:var(--bronze-900);color:#fff;box-shadow:0 14px 28px -14px rgba(35,23,11,.5);transition:transform .12s ease,background .12s ease}
+.btn:hover{background:#000;transform:translateY(-1px)}
 .btn:active{transform:translateY(0) scale(.98)}
+.btn-gold{background:linear-gradient(180deg,#D9A95F,var(--gold));color:#201403;box-shadow:0 14px 28px -14px rgba(169,120,60,.55)}
+.btn-gold:hover{background:linear-gradient(180deg,#e0b36f,#c9954f)}
 .btn-sub{text-align:center;color:var(--muted-2);font-size:.82rem;margin-top:12px}
 .btn-wrap{display:flex;flex-direction:column;align-items:flex-start}
 .center .btn-wrap{align-items:center}
 
 /* top bar */
-.topbar{position:sticky;top:0;z-index:40;background:rgba(6,9,13,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
-.brand{font-family:var(--display);font-weight:400;font-size:.95rem;color:#fff;letter-spacing:.01em}
+.topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+.brand{font-family:var(--display);font-weight:400;font-size:.88rem;color:var(--bronze-900);letter-spacing:.01em}
 .brand span{color:var(--gold)}
-.topbar .btn{padding:10px 18px;font-size:.88rem;box-shadow:none}
+.topbar .btn{padding:10px 18px;font-size:.86rem;box-shadow:none}
 
-/* hero */
-.hero{padding:56px 0 10px}
+/* hero — stays dark/ink, like the cover of a manual */
+.hero{background:var(--bronze-900);background-image:radial-gradient(120% 140% at 100% 100%,#4a3317 0%,#23170B 32%,#120c06 64%);border-radius:0 0 28px 28px;margin:0 20px;padding:52px 0 44px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 60%,rgba(201,149,79,.18) 100%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero .eyebrow{color:#D9A95F}
+.hero .eyebrow::before{background:#D9A95F}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
 @media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
-.hero .meta-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-size:.84rem;color:var(--muted-2)}
-.hero .meta-row b{display:block;color:var(--text);font-family:var(--display);font-weight:400;font-size:1.3rem}
+.hero .lede{color:#DDD4C8}
+.hero .meta-row{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:.82rem;color:#BFB5A8}
+.hero .meta-row b{display:block;color:#fff;font-family:var(--display);font-weight:400;font-size:1.25rem}
 
-/* fake terminal demo */
-.demo{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
-.demo-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel-2)}
-.demo-bar i{width:10px;height:10px;border-radius:50%;background:#394353;display:inline-block}
-.demo-bar span{margin-left:8px;font-size:.78rem;color:var(--muted-2);font-family:var(--mono)}
+/* fake terminal demo — styled like a code/manual excerpt */
+.demo{background:var(--code-bg);border:1px solid #2B2016;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.demo-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid #2B2016;background:#120c06}
+.demo-bar i{width:9px;height:9px;border-radius:50%;background:#3B2911;display:inline-block}
+.demo-bar span{margin-left:8px;font-size:.76rem;color:#8A8074;font-family:var(--mono)}
 .demo-body{padding:18px 18px 20px;font-size:.88rem}
 .demo-msg{display:flex;gap:10px;margin-bottom:16px;align-items:flex-start}
-.demo-msg .who{width:26px;height:26px;border-radius:7px;flex:none;display:grid;place-items:center;font-size:.7rem;font-weight:700;font-family:var(--mono)}
-.demo-msg.user .who{background:#1c2733;color:#9fb0c0}
-.demo-msg.ai .who{background:var(--gold);color:#1a1200}
-.demo-msg .bubble{color:var(--muted);font-family:var(--mono);font-size:.82rem;line-height:1.6}
-.demo-msg.user .bubble{color:#d8e0e8}
-.demo-card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:8px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
-.demo-card b{color:var(--text)}
-.demo-card .row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #1c2733}
+.demo-msg .who{width:26px;height:26px;border-radius:4px;flex:none;display:grid;place-items:center;font-size:.68rem;font-weight:700;font-family:var(--mono)}
+.demo-msg.user .who{background:#2B2016;color:#ABA298}
+.demo-msg.ai .who{background:var(--gold);color:#201403}
+.demo-msg .bubble{color:#ABA298;font-family:var(--mono);font-size:.82rem;line-height:1.65}
+.demo-msg.user .bubble{color:var(--code-text)}
+.demo-card{background:#140d08;border:1px solid #2B2016;border-radius:6px;padding:12px 14px;margin-top:8px;font-family:var(--mono);font-size:.78rem;color:#ABA298}
+.demo-card b{color:var(--code-text)}
+.demo-card .row{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px dashed #2B2016}
 .demo-card .row:last-child{border-bottom:0}
-.demo-tag{display:inline-block;font-size:.68rem;padding:2px 8px;border-radius:999px;border:1px solid var(--gold-dim);color:var(--gold);margin-left:6px}
-.demo-foot{padding:10px 18px;border-top:1px solid var(--line);font-size:.72rem;color:var(--muted-2);background:var(--panel-2)}
+.demo-tag{display:inline-block;font-size:.66rem;padding:2px 8px;border-radius:3px;border:1px solid var(--gold-dim);color:var(--gold);margin-left:6px}
+.demo-foot{padding:10px 18px;border-top:1px solid #2B2016;font-size:.72rem;color:#8A8074;background:#120c06}
 
-/* comparison */
-.shift{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+/* comparison — ledger style */
+.shift{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--paper)}
 .sr{display:grid;grid-template-columns:1fr 1fr}
 @media(max-width:640px){.sr{grid-template-columns:1fr}}
 .sr>div{padding:16px 22px;font-size:.92rem;border-top:1px solid var(--line)}
 .sr:first-child>div{border-top:0}
-.sr .b{color:var(--muted-2);text-decoration:line-through;text-decoration-color:rgba(232,121,90,.5)}
-.sr .a{background:rgba(245,166,35,.06);color:var(--text);position:relative;padding-left:30px}
-.sr .a::before{content:"✓";position:absolute;left:10px;color:var(--gold);font-weight:700}
-.sr.head>div{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-2);text-decoration:none;padding:12px 22px;font-weight:700}
-.sr.head .a{background:transparent;padding-left:22px;color:var(--gold)}
+.sr .b{color:var(--muted-2);text-decoration:line-through;text-decoration-color:rgba(180,84,31,.45);background:var(--surface)}
+.sr .a{background:var(--gold-soft);color:var(--text);position:relative;padding-left:32px}
+.sr .a::before{content:"✓";position:absolute;left:12px;color:var(--bronze);font-weight:700}
+.sr.head>div{font-size:.74rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-2);text-decoration:none;padding:12px 22px;font-weight:700;background:transparent}
+.sr.head .a{background:transparent;padding-left:22px;color:var(--bronze)}
 .sr.head .a::before{display:none}
 
 /* grids / cards */
 .grid{display:grid;gap:16px}
 .g2{grid-template-columns:repeat(2,1fr)}
 .g3{grid-template-columns:repeat(3,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px}
 .card h3{margin-bottom:6px;color:var(--text)}
 .card p{margin:0;font-size:.92rem}
-.icon{width:38px;height:38px;border-radius:10px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:14px}
-.icon svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.8}
+.icon{width:36px;height:36px;border-radius:4px;background:var(--gold-soft);display:grid;place-items:center;margin-bottom:14px}
+.icon svg{width:18px;height:18px;stroke:var(--bronze);fill:none;stroke-width:1.8}
 
-.bullets{display:grid;gap:10px;margin:18px 0}
-.bullets li{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-size:.93rem;color:var(--text)}
-.bullets li::before{content:"→";color:var(--gold);font-weight:700;flex:none}
+.bullets{display:grid;gap:9px;margin:18px 0}
+.bullets li{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;background:var(--surface);border:1px solid var(--line);border-radius:4px;font-size:.93rem;color:var(--text)}
+.bullets li::before{content:"→";color:var(--bronze);font-weight:700;flex:none}
 .bullets.good li::before{content:"✓";color:var(--good)}
 
 /* category cards */
@@ -116,49 +130,48 @@ ul.clean{list-style:none;margin:0;padding:0}
 .cat-note{margin-top:18px;font-size:.86rem;color:var(--muted-2);text-align:center}
 
 /* proof */
-.proof-box{background:var(--panel);border:1px dashed var(--gold-dim);border-radius:16px;padding:24px 26px}
-.proof-box .k{font-family:var(--mono);font-size:.78rem;color:var(--gold);display:block;margin-bottom:10px}
+.proof-box{background:var(--surface);border:1px dashed var(--gold-dim);border-radius:4px;padding:24px 26px}
+.proof-box .k{font-family:var(--mono);font-size:.78rem;color:var(--bronze);display:block;margin-bottom:10px}
 
 /* pricing */
 .price-wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:stretch}
 @media(max-width:760px){.price-wrap{grid-template-columns:1fr}}
 .stack{display:grid;gap:10px}
-.stack-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
-.stack-item .ic{width:30px;height:30px;border-radius:8px;background:var(--gold-soft);display:grid;place-items:center;flex:none}
-.stack-item .ic svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:2}
+.stack-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+.stack-item .ic{width:30px;height:30px;border-radius:4px;background:var(--gold-soft);display:grid;place-items:center;flex:none}
+.stack-item .ic svg{width:15px;height:15px;stroke:var(--bronze);fill:none;stroke-width:2}
 .stack-item div h3{font-size:.92rem;margin:0 0 2px}
 .stack-item div p{font-size:.82rem;margin:0}
-.price-box{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--gold-dim);border-radius:18px;padding:30px 26px;text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
-.price-box::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% -10%,rgba(245,166,35,.15),transparent 60%);pointer-events:none}
+.price-box{background:var(--bronze-900);background-image:radial-gradient(120% 80% at 50% -10%,rgba(201,149,79,.22),transparent 60%);border-radius:10px;padding:30px 26px;text-align:center;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
 .price-box>*{position:relative}
-.price-tag{font-size:.8rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.06em}
-.price{font-family:var(--display);font-weight:400;font-size:3.3rem;color:var(--gold);margin:8px 0 4px}
-.price-sub{color:var(--muted-2);font-size:.82rem;margin-bottom:22px}
-.guarantee-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(79,209,165,.1);border:1px solid rgba(79,209,165,.4);color:var(--good);border-radius:999px;padding:8px 16px;font-size:.8rem;font-weight:600;margin-bottom:18px}
+.price-tag{font-size:.8rem;color:#BFB5A8;text-transform:uppercase;letter-spacing:.06em}
+.price{font-family:var(--display);font-weight:400;font-size:3.2rem;color:var(--gold);margin:8px 0 4px}
+.price-sub{color:#BFB5A8;font-size:.82rem;margin-bottom:22px}
+.guarantee-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(111,192,142,.14);border:1px solid rgba(111,192,142,.4);color:#8FD1AC;border-radius:3px;padding:8px 16px;font-size:.8rem;font-weight:600;margin-bottom:18px}
 
 /* objections / faq accordion */
 .acc{border-top:1px solid var(--line)}
 .acc details{border-bottom:1px solid var(--line)}
 .acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px 2px;font-weight:600;font-size:1rem;color:var(--text)}
 .acc summary::-webkit-details-marker{display:none}
-.acc summary::after{content:"+";font-family:var(--display);font-size:1.3rem;color:var(--gold);flex:none}
+.acc summary::after{content:"+";font-family:var(--display);font-size:1.3rem;color:var(--bronze);flex:none}
 .acc details[open] summary::after{content:"–"}
 .acc .body{padding:0 2px 20px;max-width:70ch}
 .acc .body p{margin:0}
 
-.callout{border-left:3px solid var(--gold);background:var(--gold-soft);padding:18px 22px;border-radius:0 14px 14px 0}
+.callout{border-left:3px solid var(--bronze);background:var(--gold-soft);padding:18px 22px;border-radius:0 6px 6px 0}
 .callout p:last-child{margin:0}
 
 /* ps */
-.ps{background:var(--panel);border-left:3px solid var(--gold);padding:20px 24px;border-radius:0 14px 14px 0}
+.ps{background:var(--surface);border-left:3px solid var(--bronze);padding:20px 24px;border-radius:0 6px 6px 0}
 .ps p{margin:0;color:var(--muted)}
 
 footer{text-align:center;padding:40px 0 20px;color:var(--muted-2);font-size:.82rem;border-top:1px solid var(--line)}
 footer .brand-foot{color:var(--muted);font-weight:600;margin-bottom:4px}
 
 /* sticky mobile cta */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(6,9,13,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.sticky-cta .p{font-family:var(--display);font-weight:400;color:var(--gold);font-size:1.1rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.sticky-cta .p{font-family:var(--display);font-weight:400;color:var(--bronze);font-size:1.1rem}
 .sticky-cta .btn{padding:12px 22px;font-size:.9rem}
 @media(min-width:860px){.sticky-cta{display:none}}
 </style>
@@ -183,22 +196,23 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <body>
 
 <div class="topbar">
-  <div class="wrap" style="justify-content:flex-end">
-    <a href="#oferta" class="btn">R$47 →</a>
+  <div class="wrap" style="justify-content:space-between">
+    <span class="brand">KIT DE SKILLS <span>— THE MONT .HUB</span></span>
+    <a href="#oferta" class="btn" style="background:var(--bronze-900)">R$47 →</a>
   </div>
 </div>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (capa do manual) ============ -->
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow">Kit de Skills para Claude · Gestores de Tráfego</span>
+        <span class="eyebrow">Manual técnico · Gestores de Tráfego Meta Ads</span>
         <h1>30 Skills do Claude que fazem o trabalho de gestor de tráfego sair pronto</h1>
         <p class="lede">Relatório, auditoria, estrutura de campanha, criativo e tracking de Meta Ads — prontos para Claude.ai, Claude Desktop ou Claude Code. Sem reexplicar contexto toda vez que você abre uma conversa nova.</p>
         <div class="btn-wrap">
-          <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit por R$47</a>
-          <div class="btn-sub">Pagamento único · Acesso imediato · Garantia de 7 dias</div>
+          <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn btn-gold">Quero o Kit por R$47</a>
+          <div class="btn-sub" style="color:#BFB5A8">Pagamento único · Acesso imediato · Garantia de 7 dias</div>
         </div>
         <div class="meta-row">
           <div><b>30</b>Skills prontas</div>
@@ -214,13 +228,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
           <div class="demo-msg ai">
             <div class="who">AI</div>
             <div class="bubble">
-              Usando a skill <strong style="color:#fff">auditoria-conta-meta</strong>…
+              Usando a skill <strong style="color:var(--code-text)">auditoria-conta-meta</strong>…
               <div class="demo-card">
-                <b>🔍 Auditoria — 15 pontos <span class="demo-tag">exemplo</span></b>
-                <div class="row"><span>Config. de localização</span><span style="color:#e8795a">🔴 Crítico</span></div>
-                <div class="row"><span>Pixel recebendo eventos</span><span style="color:#4fd1a5">✅ OK</span></div>
-                <div class="row"><span>Configuração redundante</span><span style="color:#f5a623">⚠️ Atenção</span></div>
-                <div class="row"><span>Frequência (7d)</span><span style="color:#4fd1a5">✅ OK</span></div>
+                <b>Auditoria — 15 pontos <span class="demo-tag">exemplo</span></b>
+                <div class="row"><span>Config. de localização</span><span style="color:#E88A55">Crítico</span></div>
+                <div class="row"><span>Pixel recebendo eventos</span><span style="color:#6CC08E">OK</span></div>
+                <div class="row"><span>Configuração redundante</span><span style="color:var(--gold)">Atenção</span></div>
+                <div class="row"><span>Frequência (7d)</span><span style="color:#6CC08E">OK</span></div>
                 <div class="row"><span>+ 11 pontos…</span><span>…</span></div>
               </div>
             </div>
@@ -248,8 +262,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ ABERTURA ============ -->
 <section>
   <div class="wrap">
-    <span class="eyebrow">O que é</span>
-    <h2>Você já sabe gestão de tráfego. O kit resolve a parte de reexplicar isso pro Claude.</h2>
+    <div class="section-head">
+      <span class="n">01</span>
+      <div>
+        <span class="eyebrow">O que é</span>
+        <h2>Você já sabe gestão de tráfego. O kit resolve a parte de reexplicar isso pro Claude.</h2>
+      </div>
+    </div>
     <p class="lede">São 30 Skills — arquivos que ensinam o Claude a trabalhar do jeito que um gestor de tráfego de verdade trabalha, sem você montar o prompt de novo a cada conta, a cada cliente, a cada relatório de segunda-feira. Não é pacote genérico de "prompt de IA para marketing": foi construído em cima da rotina real de quem roda tráfego pra infoproduto, WhatsApp e geração de leads todos os dias, e usa essas mesmas lógicas nas contas dos próprios clientes.</p>
   </div>
 </section>
@@ -257,8 +276,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ DOR ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">O problema</span>
-    <h2>O gargalo não é saber gestão de tráfego. É repetir a explicação pra uma IA.</h2>
+    <div class="section-head">
+      <span class="n">02</span>
+      <div>
+        <span class="eyebrow">O problema</span>
+        <h2>O gargalo não é saber gestão de tráfego. É repetir a explicação pra uma IA.</h2>
+      </div>
+    </div>
     <p class="lede">Toda vez que você abre uma conversa nova pra pedir um relatório, uma auditoria ou ajuda pra subir campanha, começa do zero.</p>
     <ul class="bullets clean">
       <li>Você escreve o mesmo prompt gigante de novo a cada relatório, só trocando o nome do cliente.</li>
@@ -274,9 +298,14 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ SOLUÇÃO ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">A solução</span>
-    <h2>Uma Skill carrega o contexto pra você — uma vez só, dentro do Claude</h2>
-    <p class="lede">Uma Skill é um arquivo (SKILL.md) que o Claude lê antes de responder. Em vez de explicar de novo "como eu gosto que um relatório seja feito", a Skill já carrega isso: você pede — <em>"monta o relatório semanal do CTWA"</em> — e o Claude já sabe o padrão a seguir.</p>
+    <div class="section-head">
+      <span class="n">03</span>
+      <div>
+        <span class="eyebrow">A solução</span>
+        <h2>Uma Skill carrega o contexto pra você — uma vez só, dentro do Claude</h2>
+      </div>
+    </div>
+    <p class="lede">Uma <span class="g">Skill</span> é um arquivo (SKILL.md) que o Claude lê antes de responder. Em vez de explicar de novo "como eu gosto que um relatório seja feito", a Skill já carrega isso: você pede — <em>"monta o relatório semanal do CTWA"</em> — e o Claude já sabe o padrão a seguir.</p>
     <div class="grid g2" style="margin-top:10px">
       <div class="card">
         <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg></div>
@@ -295,8 +324,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ BENEFÍCIOS ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">Na prática</span>
-    <h2>O que muda no seu dia a dia</h2>
+    <div class="section-head">
+      <span class="n">04</span>
+      <div>
+        <span class="eyebrow">Na prática</span>
+        <h2>O que muda no seu dia a dia</h2>
+      </div>
+    </div>
     <ul class="bullets good clean">
       <li>Você não reexplica o contexto da conta toda vez que abre uma conversa nova.</li>
       <li>O relatório pro cliente sai no mesmo padrão todas as semanas, em todas as contas.</li>
@@ -313,8 +347,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ O QUE ESTÁ DENTRO ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">Estrutura do kit</span>
-    <h2>30 Skills, em 6 pastas por categoria</h2>
+    <div class="section-head">
+      <span class="n">05</span>
+      <div>
+        <span class="eyebrow">Estrutura do kit</span>
+        <h2>30 Skills, em 6 pastas por categoria</h2>
+      </div>
+    </div>
     <div class="grid g3">
       <div class="card cat-card"><span class="n">A · 6</span>
         <h3>Diagnóstico e relatórios</h3>
@@ -384,8 +423,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ PROVA SOCIAL ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">Sobre prova social</span>
-    <h2>Esse produto está lançando agora. Ainda não tem depoimento — e não vamos inventar um.</h2>
+    <div class="section-head">
+      <span class="n">06</span>
+      <div>
+        <span class="eyebrow">Sobre prova social</span>
+        <h2>Esse produto está lançando agora. Ainda não tem depoimento — e não vamos inventar um.</h2>
+      </div>
+    </div>
     <p class="lede">Não tem número de resultado, cliente satisfeito ou print de faturamento pra mostrar aqui, porque o kit ainda não foi vendido pra ninguém. Qualquer página que mostra isso num produto recém-lançado está inventando.</p>
     <div class="proof-box">
       <span class="k">[PROVA REAL: pendente]</span>
@@ -398,8 +442,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ OFERTA ============ -->
 <section class="sec-line" id="oferta">
   <div class="wrap">
-    <span class="eyebrow">O que você recebe</span>
-    <h2>Tudo incluso, por um preço só</h2>
+    <div class="section-head">
+      <span class="n">07</span>
+      <div>
+        <span class="eyebrow">O que você recebe</span>
+        <h2>Tudo incluso, por um preço só</h2>
+      </div>
+    </div>
     <div class="price-wrap">
       <div class="stack">
         <div class="stack-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div><div><h3>30 Skills em 6 pastas por categoria</h3><p>Arquivos SKILL.md prontos pra usar no Claude.ai, Claude Desktop ou Claude Code.</p></div></div>
@@ -408,11 +457,11 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
         <div class="stack-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4M15 3h4a2 2 0 012 2v4M9 21H5a2 2 0 01-2-2v-4M15 21h4a2 2 0 002-2v-4"/></svg></div><div><h3>Exemplos de entrada e saída</h3><p>Um exemplo por categoria, mostrando o que você pede e o que o Claude entrega.</p></div></div>
       </div>
       <div class="price-box">
-        <div class="guarantee-chip">🛡 Garantia de 7 dias</div>
+        <div class="guarantee-chip">Garantia de 7 dias</div>
         <div class="price-tag">Acesso completo ao kit</div>
         <div class="price">R$47</div>
         <div class="price-sub">Pagamento único · Sem mensalidade · Entrega via Kiwify</div>
-        <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit agora</a>
+        <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn btn-gold">Quero o Kit agora</a>
       </div>
     </div>
   </div>
@@ -421,8 +470,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ OBJEÇÕES ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">Antes de decidir</span>
-    <h2>Perguntas que você provavelmente está se fazendo</h2>
+    <div class="section-head">
+      <span class="n">08</span>
+      <div>
+        <span class="eyebrow">Antes de decidir</span>
+        <h2>Perguntas que você provavelmente está se fazendo</h2>
+      </div>
+    </div>
     <div class="acc">
       <details><summary>Não sei usar Claude, vou conseguir instalar isso?</summary><div class="body"><p>O kit vem com README de instalação em 3 passos e um guia de início rápido com as 5 primeiras Skills pra testar. Não precisa saber programar — só copiar o arquivo pro lugar certo e pedir pro Claude usar a Skill.</p></div></details>
       <details><summary>Já tenho minhas próprias Skills ou prompts, pra que preciso disso?</summary><div class="body"><p>Se o que você já tem resolve, ótimo — use. Esse kit é pra quem ainda reexplica contexto do zero ou quer uma estrutura testada em vez de montar as 30 peças sozinho. Também dá pra usar como ponto de partida e ajustar pro seu jeito.</p></div></details>
@@ -436,8 +490,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ GARANTIA ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">Garantia</span>
-    <h2>Se não for pra você, devolvemos o valor.</h2>
+    <div class="section-head">
+      <span class="n">09</span>
+      <div>
+        <span class="eyebrow">Garantia</span>
+        <h2>Se não for pra você, devolvemos o valor.</h2>
+      </div>
+    </div>
     <p class="lede">7 dias corridos a partir da compra pra testar o kit. Se achar que não serve pro seu jeito de trabalhar, pede o reembolso direto na Kiwify — sem formulário longo e sem precisar justificar. É assim que vendemos: sem letra miúda.</p>
   </div>
 </section>
@@ -455,8 +514,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- ============ FAQ ============ -->
 <section class="sec-line">
   <div class="wrap">
-    <span class="eyebrow">FAQ</span>
-    <h2>Perguntas frequentes</h2>
+    <div class="section-head">
+      <span class="n">10</span>
+      <div>
+        <span class="eyebrow">FAQ</span>
+        <h2>Perguntas frequentes</h2>
+      </div>
+    </div>
     <div class="acc">
       <details><summary>Preciso saber programar ou entender de IA pra usar?</summary><div class="body"><p>Não. O README explica a instalação em 3 passos, e as Skills são usadas com pedidos em português normal, como "roda a auditoria de 15 pontos nessa conta".</p></div></details>
       <details><summary>As Skills funcionam em qualquer versão do Claude?</summary><div class="body"><p>Sim — Claude.ai, Claude Desktop e Claude Code. A forma de instalar o arquivo varia levemente entre eles, e está explicada no README.</p></div></details>
@@ -477,7 +541,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     <h2>30 Skills, estrutura testada, R$47, garantia de 7 dias.</h2>
     <p class="lede" style="margin:0 auto 22px">Se você já roda tráfego e está cansado de reexplicar contexto pro Claude toda vez que precisa de um relatório, uma auditoria ou ajuda pra subir campanha, o kit resolve isso agora.</p>
     <div class="btn-wrap">
-      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit por R$47</a>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn btn-gold">Quero o Kit por R$47</a>
       <div class="btn-sub">Pagamento único · Acesso imediato · Garantia de 7 dias</div>
     </div>
   </div>
@@ -501,7 +565,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 
 <div class="sticky-cta">
   <div><span class="p">R$47</span><div style="font-size:.72rem;color:var(--muted-2)">pagamento único</div></div>
-  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit</a>
+  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn btn-gold">Quero o Kit</a>
 </div>
 
 <script>
