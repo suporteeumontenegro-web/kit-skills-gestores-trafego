@@ -1,9 +1,10 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/",
+      "src": "/",
       "has": [{ "type": "host", "value": "empresarios.themonthub.site" }],
-      "destination": "/empresarios.html"
-    }
+      "dest": "/empresarios.html"
+    },
+    { "handle": "filesystem" }
   ]
 }
