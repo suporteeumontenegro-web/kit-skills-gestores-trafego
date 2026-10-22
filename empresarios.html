@@ -428,9 +428,14 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 </div>
 
 <script>
-document.querySelectorAll('a.btn[href^="http"]').forEach(function(b){
-  b.addEventListener('click', function(){ if (window.fbq) fbq('track','InitiateCheckout'); });
-});
+(function(){
+  var q = new URLSearchParams(location.search);
+  if (!q.has('src')) q.set('src', 'empresarios');
+  document.querySelectorAll('a[href^="https://pay.kiwify.com.br"]').forEach(function(a){
+    a.href = a.href.split('?')[0] + '?' + q.toString();
+    a.addEventListener('click', function(){ if (window.fbq) fbq('track','InitiateCheckout',{value:47,currency:'BRL'}); });
+  });
+})();
 (function(){
   var boxes = document.querySelectorAll('#diag input'), n = document.getElementById('resn'),
       p = document.getElementById('resp'), b = document.getElementById('resb');
