@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Use IA pra fazer seu tráfego pago render mais | Kit de Skills</title>
+<meta name="description" content="30 Skills do Claude pra quem roda o próprio tráfego no Meta Ads: auditar a conta, entender por que o custo subiu e decidir onde colocar cada real.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1320; --bg-2:#101B2D; --bg-3:#16243A; --line:#223350;
+  --paper:#F5F1E9; --paper-2:#EDE7DA; --ink:#101826; --muted:#5A6577;
+  --soft:#A9B6CB; --white:#fff;
+  --orange:#F46E17; --orange-2:#FF8A3D; --green:#5FD0A0;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+svg{display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:92px 0}
+h1,h2,h3{margin:0}
+h1,h2{font-family:var(--serif);font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(38px,5.6vw,64px);line-height:1.04}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.1}
+h3{font-weight:700;font-size:1.05rem;line-height:1.3}
+p{margin:0;color:var(--soft)}
+em.o{font-style:italic;color:var(--orange-2)}
+.kicker{display:inline-block;font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--orange-2);margin-bottom:16px}
+.head{max-width:640px;margin:0 auto 52px;text-align:center}
+.head p{margin-top:16px;font-size:1.08rem}
+.light{background:var(--paper);color:var(--ink)}
+.light p{color:var(--muted)}
+.light .kicker{color:#C4520B}
+.light em.o{color:#D95A0B}
+
+/* button */
+.btn{display:inline-flex;align-items:center;gap:14px;border-radius:12px;padding:17px 26px;background:var(--orange);color:#fff;font-weight:800;font-size:1.02rem;text-decoration:none;transition:transform .15s,background .15s;box-shadow:0 14px 34px -14px rgba(244,110,23,.7)}
+.btn:hover{background:var(--orange-2);transform:translateY(-2px)}
+.btn svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.4;transition:transform .15s}
+.btn:hover svg{transform:translateX(4px)}
+.btn.dark{background:var(--ink);box-shadow:0 14px 34px -16px rgba(16,24,38,.6)}
+.btn.dark:hover{background:#1c2940}
+.micro{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:.84rem;color:var(--soft)}
+.micro span{display:inline-flex;gap:7px;align-items:center}
+.micro svg{width:14px;height:14px;stroke:var(--green);fill:none;stroke-width:2.6}
+
+/* hero */
+.hero{padding:64px 0 96px;background:radial-gradient(900px 500px at 85% 0%,rgba(244,110,23,.14),transparent 60%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:46px}}
+.hero .lede{font-size:1.14rem;margin:24px 0 32px;max-width:540px}
+
+/* chat mock */
+.chat{background:var(--bg-2);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
+.chat-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--soft)}
+.chat-h i{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.chat-b{padding:20px;display:grid;gap:14px}
+.msg{max-width:88%;padding:13px 16px;border-radius:14px;font-size:.92rem;line-height:1.55}
+.msg.u{justify-self:end;background:var(--orange);color:#fff;border-bottom-right-radius:4px;font-weight:600}
+.msg.a{background:var(--bg-3);color:#E5EBF5;border-bottom-left-radius:4px}
+.msg.a b{color:#fff}
+.msg .r{display:flex;gap:9px;align-items:flex-start;margin-top:8px;font-size:.88rem}
+.msg .r i{width:7px;height:7px;border-radius:50%;margin-top:8px;flex:none}
+.d-red{background:#F0705A}.d-yel{background:#F5B840}.d-grn{background:var(--green)}
+.chat-f{padding:12px 18px;border-top:1px solid var(--line);font-size:.76rem;color:#7C8AA3}
+
+/* pain */
+.pain{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:720px){.pain{grid-template-columns:1fr}}
+.pain div{background:#fff;border:1px solid var(--paper-2);border-radius:16px;padding:26px 26px 24px}
+.pain h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin-bottom:8px;color:var(--ink)}
+.pain p{font-size:.96rem}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:28px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--mono);font-size:.8rem;color:var(--orange-2);display:block;margin-bottom:18px}
+.step h3{font-size:1.2rem;margin-bottom:8px}
+.step p{font-size:.94rem}
+
+/* diagnostic */
+.diag{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--paper-2);border-radius:22px;padding:14px;box-shadow:0 30px 60px -40px rgba(16,24,38,.35)}
+.q{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:14px;cursor:pointer;transition:background .15s;user-select:none}
+.q:hover{background:var(--paper)}
+.q input{position:absolute;opacity:0}
+.q .bx{width:24px;height:24px;border-radius:7px;border:2px solid #C9C1AF;display:grid;place-items:center;flex:none;transition:.15s}
+.q .bx svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:3.4;opacity:0}
+.q input:checked + .bx{background:var(--orange);border-color:var(--orange)}
+.q input:checked + .bx svg{opacity:1}
+.q input:focus-visible + .bx{outline:2px solid var(--ink);outline-offset:2px}
+.q span.t{font-weight:600;font-size:.98rem;color:var(--ink)}
+.res{margin:10px 6px 6px;padding:22px 24px;border-radius:16px;background:var(--ink);color:#fff}
+.res .n{font-family:var(--serif);font-size:2.2rem;font-weight:600;color:var(--orange-2);line-height:1}
+.res p{color:#C5CFDF;margin-top:8px;font-size:.96rem}
+.res .btn{margin-top:16px;padding:13px 20px;font-size:.92rem}
+.res .btn[hidden]{display:none}
+
+/* ask cards */
+.asks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.asks{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.asks{grid-template-columns:1fr}}
+.ask{background:var(--bg-2);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.ask q{font-family:var(--serif);font-size:1.18rem;line-height:1.3;color:#fff;quotes:none;font-weight:500}
+.ask .sk{margin-top:auto;font-family:var(--mono);font-size:.74rem;color:var(--orange-2);background:rgba(244,110,23,.1);border-radius:6px;padding:5px 9px;align-self:flex-start}
+.ask p{font-size:.9rem}
+
+/* safe */
+.safe{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:820px){.safe{grid-template-columns:1fr}}
+.safe div{border-top:2px solid var(--ink);padding-top:18px}
+.safe h3{color:var(--ink);margin-bottom:6px;font-size:1.1rem}
+.safe p{font-size:.94rem}
+
+/* honest */
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:760px){.honest{grid-template-columns:1fr}}
+.hc{border-radius:18px;padding:30px}
+.hc.y{background:var(--bg-2);border:1px solid var(--line)}
+.hc.n{border:1px dashed #3A4C6B}
+.hc h3{font-family:var(--serif);font-size:1.4rem;font-weight:600;margin-bottom:16px;color:#fff}
+.hc ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hc li{display:flex;gap:12px;font-size:.95rem;color:#C5CFDF}
+.hc li svg{width:16px;height:16px;flex:none;margin-top:4px;fill:none;stroke-width:2.6}
+.hc.y svg{stroke:var(--green)}
+.hc.n svg{stroke:#7C8AA3}
+.note{margin-top:20px;font-size:.92rem;color:var(--soft);max-width:720px}
+
+/* offer */
+.offer{max-width:600px;margin:0 auto;background:#fff;border-radius:26px;padding:42px 38px 36px;text-align:center;box-shadow:0 50px 90px -50px rgba(16,24,38,.45);border:1px solid var(--paper-2)}
+.offer .pill{font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;color:#C4520B;background:#FDEBDD;border-radius:999px;padding:5px 13px;display:inline-block}
+.price{font-family:var(--serif);font-weight:600;font-size:4.8rem;letter-spacing:-.03em;line-height:1;margin:20px 0 6px;color:var(--ink)}
+.price sup{font-family:var(--sans);font-size:1.4rem;font-weight:800;color:#D95A0B;vertical-align:2.4rem;margin-right:6px;letter-spacing:0}
+.per{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.offer ul{list-style:none;margin:28px 0;padding:24px 0 0;border-top:1px solid var(--paper-2);text-align:left;display:grid;gap:12px}
+.offer li{display:flex;gap:11px;font-size:.95rem;color:var(--ink)}
+.offer li svg{width:17px;height:17px;stroke:#D95A0B;fill:none;stroke-width:2.6;flex:none;margin-top:3px}
+.offer .btn{width:100%;justify-content:center}
+.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-size:.8rem;color:var(--muted)}
+
+/* guarantee */
+.guar{max-width:760px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+@media(max-width:620px){.guar{grid-template-columns:1fr}}
+.guar .big{font-family:var(--serif);font-weight:600;font-size:5.5rem;line-height:.9;color:var(--orange-2)}
+.guar .big small{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--soft);margin-top:8px;font-weight:400}
+.guar h2{font-size:clamp(26px,3.2vw,34px);margin-bottom:12px}
+
+/* faq */
+.faq{max-width:760px;margin:0 auto;border-top:1px solid #D8D0BE}
+.faq details{border-bottom:1px solid #D8D0BE}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 2px;font-weight:700;font-size:1.02rem;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;color:#D95A0B;transition:transform .2s;flex:none}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding:0 2px 22px;max-width:64ch}
+
+/* final */
+.final{text-align:center;background:radial-gradient(800px 400px at 50% 100%,rgba(244,110,23,.16),transparent 65%),var(--bg)}
+.final h2{max-width:760px;margin:0 auto}
+.final p{max-width:520px;margin:18px auto 34px;font-size:1.06rem}
+.final .micro{justify-content:center}
+
+footer{background:var(--bg);border-top:1px solid var(--line);padding:34px 0 110px;text-align:center;font-size:.82rem;color:#7C8AA3}
+@media(min-width:861px){footer{padding-bottom:36px}}
+
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;transform:translateY(140%);transition:transform .3s}
+.sticky.show{transform:none}
+.sticky .btn{width:100%;justify-content:center}
+@media(max-width:860px){.sticky{display:block}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '282209364867121');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Pra quem roda o próprio tráfego</span>
+      <h1>Você paga pelo anúncio. Use <em class="o">IA</em> pra fazer cada real render mais.</h1>
+      <p class="lede">30 Skills do Claude que olham a sua conta do Meta Ads, apontam o que está travando o resultado e ajudam você a decidir o que pausar, ajustar e escalar. Sem depender de achismo e sem virar especialista em tráfego.</p>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn" id="hero-cta">Quero usar IA no meu tráfego<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="micro">
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Pagamento único</span>
+      </div>
+    </div>
+
+    <div class="chat" aria-label="Exemplo de conversa com o Claude">
+      <div class="chat-h"><i></i>Claude · Skill auditoria-conta-meta</div>
+      <div class="chat-b">
+        <div class="msg u">Por que meu custo por venda subiu essa semana?</div>
+        <div class="msg a">
+          <b>Olhei os últimos 14 dias. Três pontos explicam a alta:</b>
+          <div class="r"><i class="d-red"></i><span>Frequência do conjunto principal em 4,3. O público está saturado.</span></div>
+          <div class="r"><i class="d-yel"></i><span>2 de 3 criativos com gancho fraco: o clique caiu 31%.</span></div>
+          <div class="r"><i class="d-grn"></i><span>Pixel e eventos de compra estão chegando normalmente.</span></div>
+          <div style="margin-top:10px">Próximo passo sugerido: renovar o criativo antes de mexer no orçamento.</div>
+        </div>
+      </div>
+      <div class="chat-f">Exemplo ilustrativo, com dados fictícios.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="light">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">A realidade de quem anuncia sozinho</span>
+      <h2>O dinheiro é seu. A dúvida também.</h2>
+      <p>Quando você mesmo mexe na conta, cada decisão sai do seu caixa. E quase ninguém te diz se está decidindo certo.</p>
+    </div>
+    <div class="pain">
+      <div><h3>"Liguei a campanha e agora só torço."</h3><p>Sem um critério claro, você não sabe se está indo bem ou só gastando devagar. Aí espera mais um dia, e mais um.</p></div>
+      <div><h3>"O custo subiu e eu não sei por quê."</h3><p>Pode ser criativo cansado, público saturado, evento mal configurado. Cada causa pede uma ação diferente.</p></div>
+      <div><h3>"Mexo no orçamento no feeling."</h3><p>Aumentar na hora errada reinicia o aprendizado. Cortar na hora errada derruba uma campanha que estava quase lá.</p></div>
+      <div><h3>"Não tenho tempo pra virar especialista."</h3><p>Você tem um negócio pra tocar. Aprender cada detalhe do gerenciador não cabe na sua semana.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Como funciona</span>
+      <h2>Você pergunta como falaria com um sócio que entende de tráfego.</h2>
+      <p>As Skills ensinam o Claude a analisar a conta do jeito que um gestor experiente analisa. Você só pede.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Instale em minutos</h3><p>Um guia em 3 passos mostra como colocar as Skills no Claude.ai, no Claude Desktop ou no Claude Code.</p></div>
+      <div class="step"><h3>Peça em português</h3><p>"Audita minha conta." "Por que o custo subiu?" "Posso aumentar o orçamento?" Sem comando técnico.</p></div>
+      <div class="step"><h3>Revise e decida</h3><p>Você recebe o diagnóstico com o motivo de cada ponto. A decisão continua sendo sua, e nada é alterado sozinho.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="light">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Faça o teste</span>
+      <h2>Marque o que você já confere na sua conta hoje.</h2>
+      <p>São pontos que as Skills verificam por você, toda vez.</p>
+    </div>
+    <div class="diag" id="diag">
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Sei se o Pixel e a API de Conversões estão sem duplicar eventos</span></label>
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Confiro a frequência dos meus conjuntos antes de mexer no orçamento</span></label>
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Tenho um critério escrito pra pausar um anúncio</span></label>
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Sei qual o CPA máximo que meu negócio aguenta</span></label>
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Reviso localização, posicionamento e orçamento antes de publicar</span></label>
+      <label class="q"><input type="checkbox"><span class="bx"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="t">Planejo um criativo novo antes do atual cansar</span></label>
+      <div class="res" id="res" aria-live="polite">
+        <div class="n" id="resn">0 de 6</div>
+        <p id="resp">Marque o que você já faz e veja onde pode ganhar tempo.</p>
+        <a href="#oferta" class="btn" id="resb" hidden>Ver como as Skills fazem isso<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE PEDIR -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">O que dá pra pedir</span>
+      <h2>Perguntas reais de quem anuncia, respondidas pelas Skills.</h2>
+    </div>
+    <div class="asks">
+      <div class="ask"><q>Meu custo por venda subiu. O que aconteceu?</q><p>Cruza criativo, público, frequência e eventos pra achar a causa provável.</p><span class="sk">diagnostico-queda-performance</span></div>
+      <div class="ask"><q>Posso aumentar o orçamento sem estragar a campanha?</q><p>Aplica regras de escala para você subir com segurança, no ritmo certo.</p><span class="sk">orcamento-e-escala</span></div>
+      <div class="ask"><q>Esse anúncio eu pauso ou mantenho?</q><p>Compara gasto, resultado e seu CPA alvo, e explica o motivo da decisão.</p><span class="sk">regras-pausar-escalar</span></div>
+      <div class="ask"><q>Meu Pixel está registrando as vendas direito?</q><p>Checklist de Pixel e API de Conversões, com o que corrigir primeiro.</p><span class="sk">pixel-e-capi-checklist</span></div>
+      <div class="ask"><q>Que vídeo eu gravo pra esse produto?</q><p>Monta ângulo, gancho e chamada pra ação, pronto pra você gravar.</p><span class="sk">briefing-criativo</span></div>
+      <div class="ask"><q>Vou subir uma campanha nova. O que eu reviso antes?</q><p>Lista de conferência pra não descobrir o erro com o dinheiro já gasto.</p><span class="sk">checklist-pre-publicacao</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGURANÇA -->
+<section class="light">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Controle é seu</span>
+      <h2>Pra mexer no seu dinheiro, só com a sua autorização.</h2>
+    </div>
+    <div class="safe">
+      <div><h3>Análise só lê</h3><p>Auditoria e diagnóstico olham os dados. Não alteram nada na sua conta.</p></div>
+      <div><h3>Campanha nasce pausada</h3><p>As Skills de subida criam tudo pausado. Você revisa e ativa quando quiser.</p></div>
+      <div><h3>Funciona sem conectar nada</h3><p>Se preferir, cole os números ou um print. O conector da Meta é opcional.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HONESTO -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Antes de comprar</span>
+      <h2>Pra quem esse kit funciona, e pra quem não.</h2>
+    </div>
+    <div class="honest">
+      <div class="hc y">
+        <h3>É pra você se</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Você já sobe e acompanha suas próprias campanhas no Meta Ads.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Quer entender o que está acontecendo na conta, e não só olhar o gasto.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Aceita revisar as sugestões e tomar a decisão final.</li>
+        </ul>
+      </div>
+      <div class="hc n">
+        <h3>Não é pra você se</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Nunca anunciou no Meta e quer começar do zero absoluto.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Quer que a IA gerencie a conta sozinha.</li>
+          <li><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Espera venda garantida só por usar o kit.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">O kit foi montado a partir da rotina de um gestor de tráfego, então termos como CPA, frequência e Pixel aparecem nas respostas. Quem já roda campanha acompanha sem dificuldade, e o guia de início rápido mostra por onde começar.</p>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="light" id="oferta">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">O kit completo</span>
+      <h2>Menos tempo no gerenciador, mais clareza em cada decisão.</h2>
+    </div>
+    <div class="offer">
+      <span class="pill">PAGAMENTO ÚNICO</span>
+      <div class="price"><sup>R$</sup>47</div>
+      <div class="per">sem mensalidade · acesso imediato</div>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>30 Skills: relatório, auditoria, campanha, criativo, tracking e decisão</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Guia de instalação em 3 passos</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Guia de início rápido com as 5 primeiras Skills</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Exemplos de uso em cada área</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Funciona no Claude.ai, Claude Desktop e Claude Code</span></li>
+      </ul>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn dark">Quero o Kit de Skills<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="trust"><span>Garantia de 7 dias</span><span>·</span><span>Compra segura Kiwify</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section>
+  <div class="wrap">
+    <div class="guar">
+      <div class="big">7<small>DIAS</small></div>
+      <div>
+        <h2>Teste na sua própria conta. Se não servir, o dinheiro volta.</h2>
+        <p>Instale, rode as Skills nas suas campanhas e veja se fazem sentido pro seu negócio. Se não fizerem, peça o reembolso pela Kiwify dentro de 7 dias, sem burocracia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR + FAQ -->
+<section class="light">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Quem montou</span>
+      <h2>Wandey Montenegro, gestor de tráfego.</h2>
+      <p>Fundador da The Mont .HUB. As Skills nasceram da rotina de operar contas de infoproduto, WhatsApp e geração de leads, com os mesmos critérios de auditoria e decisão usados nos clientes da agência.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Preciso entender de tráfego pago pra usar?</summary><div class="a"><p>Precisa já ter noção do básico: subir campanha e ler o gerenciador. As Skills explicam o motivo de cada recomendação, o que ajuda a aprender enquanto usa.</p></div></details>
+      <details><summary>Preciso saber programar ou mexer com IA?</summary><div class="a"><p>Não. A instalação é copiar uma pasta pro lugar certo, e o guia mostra o passo a passo. Depois é pedir em português.</p></div></details>
+      <details><summary>Funciona no plano gratuito do Claude?</summary><div class="a"><p>As Skills funcionam no Claude.ai, no Claude Desktop e no Claude Code. Alguns recursos, como conectores, dependem do seu plano no Claude. O guia explica o que funciona em cada caso.</p></div></details>
+      <details><summary>A IA pode mexer na minha conta sozinha?</summary><div class="a"><p>Não. As Skills de análise só leem os dados. As de subida de campanha criam tudo pausado, pra você revisar e ativar.</p></div></details>
+      <details><summary>Preciso conectar minha conta de anúncios ao Claude?</summary><div class="a"><p>Não é obrigatório. Você pode colar números ou um print. Com o conector oficial da Meta, as Skills leem os dados direto da conta.</p></div></details>
+      <details><summary>Vou vender mais com isso?</summary><div class="a"><p>O kit organiza sua análise e ajuda a evitar erros de configuração e decisões no escuro, o que dá mais base pra conta performar. Resultado de venda ainda depende da sua oferta, do criativo, do público e do orçamento.</p></div></details>
+      <details><summary>Serve pro meu tipo de negócio?</summary><div class="a"><p>As Skills cobrem três cenários: venda de infoproduto, atendimento por WhatsApp e captação de leads por formulário. Auditoria, tracking, criativo e decisão servem pra qualquer conta de Meta Ads.</p></div></details>
+      <details><summary>E se eu não gostar?</summary><div class="a"><p>Você tem 7 dias de garantia. Pede o reembolso pela Kiwify e recebe o valor de volta.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <h2>Pare de decidir no escuro com o seu dinheiro de anúncio.</h2>
+    <p>30 Skills, guias e exemplos pra você analisar sua conta com mais critério. Pagamento único, com 7 dias pra testar.</p>
+    <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit de Skills<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="micro">
+      <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Acesso imediato</span>
+      <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Garantia de 7 dias</span>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Um produto The Mont .HUB</div></footer>
+
+<div class="sticky" id="sticky">
+  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit de Skills<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+
+<script>
+document.querySelectorAll('a.btn[href^="http"]').forEach(function(b){
+  b.addEventListener('click', function(){ if (window.fbq) fbq('track','InitiateCheckout'); });
+});
+(function(){
+  var boxes = document.querySelectorAll('#diag input'), n = document.getElementById('resn'),
+      p = document.getElementById('resp'), b = document.getElementById('resb');
+  function upd(){
+    var c = 0; boxes.forEach(function(x){ if (x.checked) c++; });
+    var miss = 6 - c;
+    n.textContent = c + ' de 6';
+    if (c === 0) { p.textContent = 'Marque o que você já faz e veja onde pode ganhar tempo.'; b.hidden = true; return; }
+    b.hidden = false;
+    if (miss === 0) p.textContent = 'Você já confere o essencial. As Skills fazem isso mais rápido e deixam tudo registrado.';
+    else if (miss <= 2) p.textContent = 'Você está bem. Faltam ' + miss + ' pontos que as Skills conferem por você, toda vez.';
+    else p.textContent = 'Tem ' + miss + ' pontos que hoje ficam no escuro. É exatamente o que as Skills checam na sua conta.';
+  }
+  boxes.forEach(function(x){ x.addEventListener('change', upd); });
+})();
+(function(){
+  var s = document.getElementById('sticky'), hero = document.getElementById('hero-cta'), offer = document.getElementById('oferta');
+  if (!('IntersectionObserver' in window)) { s.classList.add('show'); return; }
+  var hv = true, ov = false;
+  function u(){ s.classList.toggle('show', !hv && !ov); }
+  new IntersectionObserver(function(e){ hv = e[0].isIntersecting; u(); }).observe(hero);
+  new IntersectionObserver(function(e){ ov = e[0].isIntersecting; u(); }, {threshold:.2}).observe(offer);
+})();
+</script>
+</body>
+</html>
