@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kit de Skills do Claude para Gestores de Tráfego</title>
-<meta name="description" content="30 Skills do Claude para gestores de tráfego Meta Ads, organizadas em 6 agentes: relatório, auditoria, estrutura de campanha, criativo, tracking e decisão, no mesmo padrão, toda vez.">
+<title>Equipe de Tráfego Pago com Claude</title>
+<meta name="description" content="Uma equipe de tráfego pago dentro do Claude, pronta quando você chamar: 6 agentes e 30 Skills para Meta Ads ajudam em relatório, auditoria, campanha, criativo, tracking e decisão, no mesmo padrão, toda vez.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0C1113">
@@ -100,15 +100,6 @@ p{margin:0;color:var(--muted)}
 .stats b{display:block;font-size:2rem;font-weight:800;letter-spacing:-.02em}
 .stats span{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
 @media(max-width:760px){.stats .wrap{grid-template-columns:1fr 1fr}.stats .c{padding:22px 16px}.stats .c:nth-child(3){border-left:0;padding-left:0}.stats .c:nth-child(-n+2){border-bottom:1px solid var(--line)}}
-
-/* pilares */
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:860px){.pillars{grid-template-columns:1fr}}
-.pillar{border:1px solid var(--line);border-radius:18px;padding:30px 28px;background:#fff;transition:border-color .2s,transform .2s}
-.pillar:hover{border-color:#d7d7da;transform:translateY(-2px)}
-.pillar .n{font-family:var(--mono);font-size:.74rem;color:var(--orange);letter-spacing:.06em}
-.pillar h3{font-size:1.35rem;margin:10px 0 10px}
-.pillar p{font-size:.95rem}
 
 /* como funciona */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
@@ -283,6 +274,35 @@ footer{border-top:1px solid var(--line);padding:36px 0 110px;text-align:center;f
 .js .rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
 .js .rv.in{opacity:1;transform:none}
 
+/* barra de tempo e dica do console */
+.feed .prog{height:2px;background:var(--dark-line);border-radius:2px;margin-top:16px;overflow:hidden}
+.feed .prog i{display:block;height:100%;width:0;background:var(--orange)}
+.feed .hint{margin-top:10px;font-size:.72rem;color:#8A979E}
+
+/* polimento visual */
+.kicker{display:inline-flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:22px;height:2px;border-radius:2px;background:currentColor}
+.steps{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.step:hover{border-color:#F2C9A8;transform:translateY(-2px)}
+.step .n{background:linear-gradient(135deg,var(--navy),var(--navy-2));box-shadow:0 8px 18px -8px rgba(10,37,64,.6)}
+.agent{position:relative;overflow:hidden}
+.agent::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.agent:hover::before{transform:scaleX(1)}
+.ba-row .yes{background:rgba(244,110,23,.06)}
+.ba-row .yes svg{stroke:var(--orange)}
+.tabs{scrollbar-width:none;scroll-snap-type:x proximity}
+.tabs::-webkit-scrollbar{display:none}
+.tab{display:inline-flex;align-items:center;gap:9px;scroll-snap-align:center;flex:1 1 auto;justify-content:center;padding:13px 14px 11px}
+.tab .av.xs{opacity:.7;border:1px solid var(--dark-line)}
+.tab[aria-selected="true"] .av.xs{opacity:1;border-color:var(--orange)}
+.who-c{transition:border-color .2s,transform .2s}
+.who-c:hover{border-color:#F2C9A8;transform:translateY(-2px)}
+.req-c{transition:border-color .2s}
+.demo .pane.on{animation:up .3s ease}
+
 /* ajustes finos para celular */
 @media(max-width:600px){
   section{padding:64px 0}
@@ -300,6 +320,17 @@ footer{border-top:1px solid var(--line);padding:36px 0 110px;text-align:center;f
   .faq summary{font-size:.98rem}
   .final p{font-size:1rem}
   footer{padding-bottom:110px}
+  /* preço e garantia legíveis no celular */
+  .price-note{font-size:.9rem;font-weight:600;color:var(--ink)}
+  .micro{font-size:.92rem;color:var(--muted)}
+  /* equipe compacta: foto pequena ao lado do nome, sem a foto de grupo repetida */
+  .team-photo{display:none}
+  .team{gap:12px}
+  .agent{display:grid;grid-template-columns:72px 1fr;column-gap:14px;padding:16px;align-items:center}
+  .agent-photo{grid-column:1;grid-row:1;width:72px;height:72px;border-radius:50%;margin:0}
+  .agent .top{grid-column:2;grid-row:1}
+  .agent .does,.agent .ask,.agent details{grid-column:1 / -1}
+  .agent .does{margin-top:12px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.feed .cur{display:none}}
 </style>
@@ -328,11 +359,11 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker anim-up">Para gestores de tráfego · Meta Ads</span>
-      <h1 class="anim-up d1">Mais <em>tempo</em>, mais <em>clientes</em> fechados e mais <em>resultado</em> nas contas que você gerencia.</h1>
-      <p class="lede anim-up d2">30 Skills do Claude organizadas em 6 agentes: relatório, auditoria, campanha, criativo, tracking e decisão. Servem para infoproduto e para negócio local. Você pede em uma frase e recebe pronto, no mesmo padrão, toda vez.</p>
+      <span class="kicker anim-up">Equipe de tráfego pago com Claude · Meta Ads</span>
+      <h1 class="anim-up d1">Sua <em>equipe de tráfego pago</em> dentro do <em>Claude</em>, pronta na hora em que você chamar.</h1>
+      <p class="lede anim-up d2">6 agentes e 30 Skills te ajudam em relatório, auditoria, campanha, criativo, tracking e decisão, para infoproduto e para negócio local. Você chama, pede em uma frase e recebe pronto em minutos, no mesmo padrão, toda vez. Quem decide continua sendo você.</p>
       <div class="cta-wrap anim-up d2">
-        <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse" id="hero-cta">Quero o Kit de Skills<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+        <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse" id="hero-cta">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
         <p class="price-note">R$ 47 · pagamento único · sem mensalidade</p>
       </div>
       <div class="micro anim-up d3">
@@ -343,7 +374,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
 
     <div class="console anim-up d2" aria-label="Exemplo ao vivo: agentes respondendo pedidos">
-      <div class="c-bar"><i></i><i></i><i></i><span>equipe-skills</span><span class="live">ao vivo</span></div>
+      <div class="c-bar"><i></i><i></i><i></i><span>equipe-skills</span><span class="live">exemplo</span></div>
       <div class="crew" id="crew">
         <button class="ag" type="button" data-name="Lívia"><img class="ag-img" src="agentes/agent-livia.jpg" alt="" width="900" height="900" loading="lazy">Lívia</button>
         <button class="ag" type="button" data-name="Caio"><img class="ag-img" src="agentes/agent-caio.jpg" alt="" width="900" height="900" loading="lazy">Caio</button>
@@ -356,6 +387,8 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
         <div><span class="pr">&gt;</span> <span id="typed"></span><i class="cur"></i></div>
         <span class="wlabel" id="who"></span>
         <div id="outlines"></div>
+        <div class="prog"><i id="progbar"></i></div>
+        <div class="hint"><span id="hint">Toque num agente pra ver o exemplo dele.</span></div>
         <p class="note">Exemplo ilustrativo, com dados fictícios.</p>
       </div>
     </div>
@@ -367,33 +400,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <div class="c"><b>6</b><span>Agentes especialistas</span></div>
       <div class="c"><b>2</b><span>Cenários: infoproduto e negócio local</span></div>
       <div class="c"><b>2</b><span>Modos: conector ou manual</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PILARES -->
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="kicker">O que muda</span>
-      <h2>Três ganhos que aparecem já na primeira semana.</h2>
-    </div>
-    <div class="pillars">
-      <div class="pillar">
-        <span class="n">01 · TEMPO</span>
-        <h3>Relatório de segunda em minutos.</h3>
-        <p>Você não remonta prompt a cada cliente. Pede "monta o relatório da semana" e recebe a versão técnica e a versão pro cliente, no seu padrão.</p>
-      </div>
-      <div class="pillar">
-        <span class="n">02 · CLIENTES</span>
-        <h3>Entrega que parece de agência grande.</h3>
-        <p>Auditoria de 15 pontos, relatório organizado e plano de ação claro. É o tipo de material que pesa na reunião de fechamento e na renovação.</p>
-      </div>
-      <div class="pillar">
-        <span class="n">03 · RESULTADO</span>
-        <h3>Menos erro bobo travando a conta.</h3>
-        <p>Checklist de Pixel e API de Conversões, revisão antes de publicar e regras claras pra pausar ou escalar. A base que deixa a otimização funcionar.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -414,13 +420,19 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <div class="step">
         <span class="n">2</span>
         <h3>Peça em português</h3>
-        <p>Diga o que precisa, com a conta ou os dados na mão. A Skill certa entra em ação sozinha.</p>
+        <p>Diga o que precisa, com a conta ou os dados na mão. A Skill certa é acionada pelo seu pedido.</p>
         <span class="say">"roda a auditoria dessa conta"</span>
       </div>
       <div class="step">
         <span class="n">3</span>
         <h3>Revise e aprove</h3>
         <p>Análises só leem a conta. Campanhas nascem pausadas, e nada vai ao ar sem a sua revisão.</p>
+      </div>
+      <div class="step">
+        <span class="n">4</span>
+        <h3>Programe o relatório</h3>
+        <p>Com o conector da Meta, você agenda o relatório do cliente pra rodar na nuvem no dia e no horário que definir.</p>
+        <span class="say">"toda segunda, às 8h"</span>
       </div>
     </div>
   </div>
@@ -431,7 +443,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="head">
       <span class="kicker">Conheça a equipe</span>
-      <h2>Seis agentes. Cada um cuida de uma parte da sua rotina.</h2>
+      <h2>Conheça a sua equipe de tráfego pago. Seis agentes, cada um na sua função.</h2>
       <p>Cada agente conhece as Skills da sua área. Você fala com ele pelo nome ou pede direto o que precisa.</p>
     </div>
     <figure class="team-photo rv"><img src="agentes/equipe.jpg" alt="Equipe de agentes: Lívia, Caio, Nina, Rafa, Marina e Théo" width="1600" height="876" loading="lazy"></figure>
@@ -470,7 +482,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       </article>
       <article class="agent rv">
         <img class="agent-photo" src="agentes/agent-marina.jpg" alt="Marina" width="900" height="900" loading="lazy"><div class="top"><div><h3>Marina</h3><div class="role">Operação de agência</div></div></div>
-        <p class="does">Cuida do onboarding, da reunião mensal, da rotina diária e do reajuste de verba e proposta.</p>
+        <p class="does">Prepara o onboarding, a reunião mensal, a rotina diária de otimização e o reajuste de verba e proposta quando você pede.</p>
         <div class="ask"><b>Peça:</b> "prepara a reunião mensal do cliente"</div>
         <details><summary>4 Skills</summary>
           <ul><li>onboarding-cliente-trafego</li><li>reuniao-mensal-cliente</li><li>rotina-diaria-otimizacao</li><li>reajuste-de-verba-e-proposta</li></ul>
@@ -487,7 +499,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
     <p class="team-note">Agentes ilustrados. São personagens que organizam as Skills, não pessoas reais.</p>
     <div class="mid">
-      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a equipe completa<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -498,7 +510,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     <div class="head">
       <span class="kicker">Sem o kit × com o kit</span>
       <h2>Você já sabe fazer. O que cansa é explicar tudo de novo pra IA.</h2>
-      <p>Cada conversa nova com o Claude começa do zero. As Skills guardam o seu jeito de trabalhar e aplicam sozinhas.</p>
+      <p>Cada conversa nova com o Claude começa do zero. As Skills já trazem o método pronto: você chama e elas aplicam, sem precisar reescrever o prompt.</p>
     </div>
     <div class="ba">
       <div class="ba-row ba-head"><div class="no">Sem o kit</div><div class="yes">Com o kit</div></div>
@@ -508,7 +520,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       </div>
       <div class="ba-row">
         <div class="no"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Auditoria de memória, sempre falta um ponto</div>
-        <div class="yes"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>15 pontos checados em toda conta</div>
+        <div class="yes"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>15 pontos checados sempre que você pede</div>
       </div>
       <div class="ba-row">
         <div class="no"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>Briefing e copy de criativo sem padrão</div>
@@ -536,10 +548,12 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
     <div class="demo rv">
       <div class="tabs" role="tablist">
-        <button class="tab" role="tab" aria-selected="true" data-p="p1">Lívia · Auditoria</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="p2">Théo · Decisão</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="p3">Nina · Criativo</button>
-        <button class="tab" role="tab" aria-selected="false" data-p="p4">Rafa · Tracking</button>
+        <button class="tab" role="tab" aria-selected="true" data-p="p1"><img class="av xs" src="agentes/avatar-livia.jpg" alt="" width="320" height="320" loading="lazy">Lívia</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="p5"><img class="av xs" src="agentes/avatar-caio.jpg" alt="" width="320" height="320" loading="lazy">Caio</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="p3"><img class="av xs" src="agentes/avatar-nina.jpg" alt="" width="320" height="320" loading="lazy">Nina</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="p4"><img class="av xs" src="agentes/avatar-rafa.jpg" alt="" width="320" height="320" loading="lazy">Rafa</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="p6"><img class="av xs" src="agentes/avatar-marina.jpg" alt="" width="320" height="320" loading="lazy">Marina</button>
+        <button class="tab" role="tab" aria-selected="false" data-p="p2"><img class="av xs" src="agentes/avatar-theo.jpg" alt="" width="320" height="320" loading="lazy">Théo</button>
       </div>
 
       <div class="pane on" id="p1" role="tabpanel">
@@ -590,6 +604,31 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
           <div class="r"><span>Lead com event_id</span><span class="bad">Faltando</span></div>
           <div class="r"><span>Mesmo event_id no Pixel e na API</span><span class="warn">Não confirmado</span></div>
           <div class="r"><span>Parâmetros de correspondência</span><span class="ok">e-mail, telefone</span></div>
+        </div>
+      </div>
+
+      <div class="pane" id="p5" role="tabpanel">
+        <div class="agent-head"><img class="agent-face" src="agentes/agent-caio.jpg" alt="Caio" width="900" height="900" loading="lazy"><div><b>Caio</b><span>Estrutura e subida</span></div></div>
+        <div class="askrow"><span class="who">VC</span><p>monta a estrutura de campanha de leads pra uma clínica</p></div>
+        <div class="out">
+          <div class="out-h"><span class="ag-tag"><img class="av sm" src="agentes/avatar-caio.jpg" alt="Caio" width="320" height="320" loading="lazy">estrutura-campanha-leads</span><span class="tg">pré-publicação</span></div>
+          <div class="r"><span>Objetivo</span><span>Cadastros · formulário instantâneo</span></div>
+          <div class="r"><span>Conjuntos</span><span>2 · público aberto e interesses</span></div>
+          <div class="r"><span>Posicionamentos</span><span>Feed e Reels</span></div>
+          <div class="r"><span>Orçamento</span><span class="warn">Conferir antes de ativar</span></div>
+          <div class="r"><span>Status</span><span class="ok">Pausada, aguardando sua revisão</span></div>
+        </div>
+      </div>
+
+      <div class="pane" id="p6" role="tabpanel">
+        <div class="agent-head"><img class="agent-face" src="agentes/agent-marina.jpg" alt="Marina" width="900" height="900" loading="lazy"><div><b>Marina</b><span>Operação de agência</span></div></div>
+        <div class="askrow"><span class="who">VC</span><p>prepara a reunião mensal desse cliente</p></div>
+        <div class="out">
+          <div class="out-h"><span class="ag-tag"><img class="av sm" src="agentes/avatar-marina.jpg" alt="Marina" width="320" height="320" loading="lazy">reuniao-mensal-cliente</span><span class="tg">reunião mensal</span></div>
+          <div class="r"><span>Pauta</span><span>Resultados · aprendizados · próximos passos</span></div>
+          <div class="r"><span>Resumo pro cliente</span><span>Linguagem simples, sem jargão</span></div>
+          <div class="r"><span>Verba</span><span class="warn">Sugestão de ajuste, pra você aprovar</span></div>
+          <div class="r"><span>Pendências do cliente</span><span>2 itens</span></div>
         </div>
       </div>
     </div>
@@ -661,7 +700,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     <div class="req">
       <div class="req-c"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><h3>Uma conta no Claude</h3><p>Claude.ai, Claude Desktop ou Claude Code. O guia mostra a instalação em cada um.</p></div>
       <div class="req-c"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><h3>Acesso às contas de anúncio</h3><p>Pra puxar números. Se preferir, é só colar os dados ou um print.</p></div>
-      <div class="req-c opt"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><h3>Conector da Meta<span class="tag">OPCIONAL</span></h3><p>Com ele, as Skills de análise leem os dados direto da conta.</p></div>
+      <div class="req-c opt"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><h3>Conector da Meta<span class="tag">OPCIONAL</span></h3><p>Com ele, as Skills de análise leem os dados direto da conta e o relatório programado roda na nuvem. Sem ele, tudo funciona colando os dados, mas programar o relatório fica mais trabalhoso.</p></div>
     </div>
   </div>
 </section>
@@ -670,7 +709,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section id="oferta">
   <div class="wrap">
     <div class="head">
-      <h2>Comece hoje.</h2>
+      <h2>Monte a sua equipe hoje.</h2>
     </div>
     <div class="offer rv">
       <span class="pill">PAGAMENTO ÚNICO</span>
@@ -679,12 +718,13 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <ul>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>30 Skills organizadas em 6 agentes: relatório, auditoria, campanha, criativo, tracking e decisão</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Vídeos guiados de como usar o Claude com as Skills</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Aula: como programar o relatório do cliente pra rodar na nuvem, no dia e horário que você definir (com o conector da Meta)</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Guia de instalação em 3 passos</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Guia de início rápido com as 5 primeiras Skills</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Exemplos de uso de cada agente</span></li>
         <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Funciona com ou sem o conector da Meta</span></li>
       </ul>
-      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit de Skills<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
       <div class="trust">
         <span><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Garantia de 7 dias</span>
         <span><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Compra segura Kiwify</span>
@@ -725,6 +765,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <details><summary>Tem vídeo mostrando como usar?</summary><div class="a"><p>Sim. O kit inclui vídeos guiados sobre como usar o Claude com as Skills no dia a dia do gestor de tráfego.</p></div></details>
       <details><summary>Funciona no plano gratuito do Claude?</summary><div class="a"><p>As Skills funcionam no Claude.ai, no Claude Desktop e no Claude Code. Alguns recursos, como conectores, dependem do plano que você usa no Claude. O guia explica o que funciona em cada caso.</p></div></details>
       <details><summary>Preciso conectar a conta de anúncios ao Claude?</summary><div class="a"><p>Não é obrigatório. Sem conector, você cola os números ou um print e a Skill trabalha em cima disso. Com o conector oficial da Meta, ela lê os dados direto.</p></div></details>
+      <details><summary>Os agentes monitoram minhas contas sozinhos?</summary><div class="a"><p>Por padrão, não. Eles trabalham quando você chama: abre o Claude, pede e recebe em minutos. Você também aprende a programar o relatório do cliente pra rodar na nuvem, no dia e horário que você definir, por exemplo toda segunda. Isso funciona com o conector da Meta; sem ele, a programação é mais trabalhosa. Isso é uma tarefa agendada por você, não um agente vigiando a conta 24 horas. E eles não guardam memória entre conversas, a menos que você peça pra registrar algo.</p></div></details>
       <details><summary>A IA pode mexer na conta do meu cliente sozinha?</summary><div class="a"><p>Não. As Skills de análise só leem. As de campanha criam tudo pausado, pra você revisar e ativar quando quiser.</p></div></details>
       <details><summary>Serve pra qualquer nicho?</summary><div class="a"><p>As Skills cobrem os três cenários mais comuns: infoproduto, WhatsApp e geração de leads. Auditoria, tracking, criativo e decisão servem pra qualquer conta de Meta Ads.</p></div></details>
       <details><summary>Vou ter resultado garantido?</summary><div class="a"><p>Não. O kit organiza seu processo e reduz erro de configuração, o que dá mais base pra conta performar. Venda ainda depende de oferta, criativo, público e orçamento.</p></div></details>
@@ -737,10 +778,10 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <!-- FINAL -->
 <section class="final bt">
   <div class="wrap">
-    <h2>Seu próximo relatório pode levar <span class="hl">minutos</span>, não a manhã inteira.</h2>
+    <h2>Tenha uma equipe de tráfego pago à mão <span class="hl">hoje</span>. Seu próximo relatório sai em minutos.</h2>
     <p>30 Skills, 6 agentes, guias de instalação, vídeos e exemplos. Pagamento único, com 7 dias pra testar.</p>
     <div class="cta-wrap">
-      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse">Quero o Kit de Skills<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
     </div>
     <div class="micro">
       <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Acesso imediato</span>
@@ -754,7 +795,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 </footer>
 
 <div class="sticky" id="sticky">
-  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero o Kit de Skills<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a equipe · R$ 47<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
 </div>
 
 <script>
@@ -774,88 +815,137 @@ document.querySelectorAll('.tab').forEach(function(t){
     document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('on'); });
     t.setAttribute('aria-selected','true');
     document.getElementById(t.dataset.p).classList.add('on');
+    if (t.scrollIntoView) t.scrollIntoView({ inline:'center', block:'nearest', behavior:'smooth' });
   });
 });
 
-/* console ao vivo: agentes respondendo em sequência */
+/* console de exemplo: 6 agentes, tempo de leitura, pausa ao interagir */
 (function(){
   var scenes = [
     { agent:'Lívia', prompt:'monta o relatório da semana dessa conta', out:[
       'Relatório pronto: versão técnica e versão pro cliente.',
       'Gasto, CPA e ROAS comparados com a régua desse cliente.',
       'Atenção: 2 conjuntos sem evento de compra nos últimos 7 dias.'] },
-    { agent:'Théo', prompt:'pauso ou mantenho o conjunto "Prospecção UGC v2"?', out:[
-      'Decisão: pausar.',
-      'Gasto 2,7× o CPA alvo, 0 vendas em 5 dias.',
-      'Antes, confirme que o evento de compra chega no Pixel.'] },
+    { agent:'Caio', prompt:'monta a estrutura de campanha de leads pra uma clínica', out:[
+      'Estrutura: 1 campanha, 2 conjuntos (público aberto e interesses).',
+      'Posicionamentos: Feed e Reels. Stories fica pra teste.',
+      'Tudo nasce pausado: você revisa e ativa quando quiser.'] },
+    { agent:'Nina', prompt:'briefing de criativo pra clínica de estética, vídeo de 30s', out:[
+      'Ângulo: resultado natural, sem exagero.',
+      'Gancho 0–3s: "Ninguém percebeu que eu fiz".',
+      'CTA: agendar avaliação no WhatsApp.'] },
     { agent:'Rafa', prompt:'confere o tracking dessa landing antes de subir a campanha', out:[
       'PageView disparando: OK.',
       'Lead sem event_id: faltando.',
       'Pixel e API: confirmar a deduplicação.'] },
-    { agent:'Nina', prompt:'briefing de criativo pra clínica de estética, vídeo de 30s', out:[
-      'Ângulo: resultado natural, sem exagero.',
-      'Gancho 0–3s: "Ninguém percebeu que eu fiz".',
-      'CTA: agendar avaliação no WhatsApp.'] }
+    { agent:'Marina', prompt:'prepara a reunião mensal desse cliente', out:[
+      'Pauta pronta: resultados, aprendizados e próximos passos.',
+      'Resumo do mês em linguagem de cliente, sem jargão.',
+      'Sugestão de ajuste de verba, pra você aprovar.'] },
+    { agent:'Théo', prompt:'pauso ou mantenho o conjunto "Prospecção UGC v2"?', out:[
+      'Decisão: pausar.',
+      'Gasto 2,7× o CPA alvo, 0 vendas em 5 dias.',
+      'Antes, confirme que o evento de compra chega no Pixel.'] }
   ];
+  var HOLD = 9000;      /* tempo com a resposta completa na tela antes de trocar de agente */
+  var LINE = 800;       /* intervalo entre as linhas da resposta */
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var crew = document.querySelectorAll('#crew .ag');
   var typed = document.getElementById('typed');
   var outl = document.getElementById('outlines');
   var who = document.getElementById('who');
   var feed = document.getElementById('feed');
+  var bar = document.getElementById('progbar');
+  var hint = document.getElementById('hint');
+  var consoleEl = feed.closest('.console');
+  var token = 0, hovering = false, manual = false;
 
   function setActive(name){
     crew.forEach(function(c){ c.classList.toggle('on', c.getAttribute('data-name') === name); });
     who.textContent = 'agente: ' + name;
   }
-  function typeOut(text, n, done){
+  function indexOf(name){
+    for (var k = 0; k < scenes.length; k++) if (scenes[k].agent === name) return k;
+    return 0;
+  }
+  function showFull(s){
+    setActive(s.agent);
+    typed.textContent = s.prompt;
+    outl.innerHTML = '';
+    s.out.forEach(function(t){ var d = document.createElement('div'); d.className = 'ln'; d.textContent = t; outl.appendChild(d); });
+  }
+  function progress(ms){
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0';
+    if (ms){ bar.offsetWidth; bar.style.transition = 'width ' + ms + 'ms linear'; bar.style.width = '100%'; }
+  }
+  /* espera que respeita a pausa (mouse em cima) e é cancelada por token */
+  function later(tok, ms, fn){
+    var left = ms, last = Date.now();
+    (function tick(){
+      if (tok !== token) return;
+      var now = Date.now();
+      if (!hovering) left -= (now - last);
+      last = now;
+      if (left <= 0) fn(); else setTimeout(tick, 100);
+    })();
+  }
+  function typeOut(tok, text, n, done){
+    if (tok !== token) return;
     if (n <= text.length){
       typed.textContent = text.slice(0, n);
-      setTimeout(function(){ typeOut(text, n + 1, done); }, 22);
+      setTimeout(function(){ typeOut(tok, text, n + 1, done); }, 22);
     } else { done(); }
   }
   function play(i){
+    var tok = ++token;
     var s = scenes[i % scenes.length];
     setActive(s.agent);
     typed.textContent = '';
     outl.innerHTML = '';
-    typeOut(s.prompt, 0, function(){
+    progress(0);
+    typeOut(tok, s.prompt, 0, function(){
       var k = 0;
       (function next(){
+        if (tok !== token) return;
         if (k < s.out.length){
           var d = document.createElement('div');
           d.className = 'ln';
           d.textContent = s.out[k++];
           outl.appendChild(d);
-          setTimeout(next, 650);
+          later(tok, LINE, next);
         } else {
-          setTimeout(function(){ play(i + 1); }, 3200);
+          progress(HOLD);
+          later(tok, HOLD, function(){ play(i + 1); });
         }
       })();
     });
   }
+  function stopAuto(){
+    manual = true; token++; progress(0);
+    if (hint) hint.textContent = 'Você escolheu o agente. Toque em outro pra ver o exemplo dele.';
+  }
+
   if (reduce){
-    var s0 = scenes[0];
-    setActive(s0.agent); typed.textContent = s0.prompt;
-    s0.out.forEach(function(t){ var d = document.createElement('div'); d.className = 'ln'; d.textContent = t; outl.appendChild(d); });
+    showFull(scenes[0]);
   } else {
     var started = false;
+    function start(){ if (!started && !manual){ started = true; play(0); } }
     if ('IntersectionObserver' in window){
-      new IntersectionObserver(function(es){
-        if (es[0].isIntersecting && !started){ started = true; play(0); }
-      }, { threshold: .3 }).observe(feed);
-    } else { play(0); }
+      new IntersectionObserver(function(es){ if (es[0].isIntersecting) start(); }, { threshold: .3 }).observe(feed);
+    } else { start(); }
   }
-  /* clique manual num agente: mostra o agente escolhido */
+
+  /* pausa enquanto o mouse está no console (desktop) */
+  consoleEl.addEventListener('mouseenter', function(){ hovering = true; });
+  consoleEl.addEventListener('mouseleave', function(){ hovering = false; });
+
+  /* clique manual: para a troca automática e mostra o exemplo COMPLETO do agente escolhido */
   crew.forEach(function(c){
     c.addEventListener('click', function(){
-      var name = c.getAttribute('data-name');
-      var idx = 0;
-      scenes.forEach(function(s, k){ if (s.agent === name) idx = k; });
-      setActive(name);
-      typed.textContent = scenes[idx].prompt;
-      outl.innerHTML = '';
-      scenes[idx].out.forEach(function(t){ var d = document.createElement('div'); d.className = 'ln'; d.textContent = t; outl.appendChild(d); });
+      stopAuto();
+      showFull(scenes[indexOf(c.getAttribute('data-name'))]);
     });
   });
 })();
