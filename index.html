@@ -153,6 +153,23 @@ h1,h2,h3,h4{text-wrap:balance}
 .agent li{font-family:var(--mono);font-size:.76rem;color:var(--muted);padding:4px 0;border-top:1px dashed var(--line)}
 .agent li:first-child{border-top:0}
 .agent .learn{margin:12px 0 0;font-size:.9rem;color:var(--muted)}
+
+/* agente que gira: frente com a ficha, verso com a história */
+.flip{perspective:1200px;cursor:pointer;padding:0;background:none;border:0;box-shadow:none;outline:none}
+.flip.agent{display:block;grid-template-columns:none;align-items:stretch;width:100%;min-width:0}
+.flip:hover{box-shadow:none;border-color:transparent}
+.flip-inner{position:relative;display:grid;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.flip.on .flip-inner{transform:rotateY(180deg)}
+.flip:focus-visible .flip-inner{outline:2px solid var(--orange);outline-offset:4px;border-radius:18px}
+.face{grid-area:1/1;display:flex;flex-direction:column;min-width:0;padding:24px;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.front{background:#fff;border:1px solid var(--line)}
+.face.back{transform:rotateY(180deg);justify-content:center;background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;border:1px solid transparent}
+.face.back h3{color:#fff;font-size:1.4rem;margin:8px 0 14px}
+.face.back .role{color:#ffb36b}
+.face.back .learn{color:#dbe6ff;font-size:.98rem;line-height:1.6;margin:0}
+.flip-cue,.flip-hint{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
+.face.back .flip-hint{color:#8fa6c9}
+@media(prefers-reduced-motion:reduce){.flip-inner{transition:none}}
 .team-note{text-align:center;margin-top:24px;font-size:.84rem;color:var(--muted-2)}
 
 /* relatórios: livro 3D em vidro, rotativo */
@@ -491,54 +508,108 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
     <figure class="team-photo rv"><img src="agentes/equipe.jpg" alt="Equipe de agentes: Lívia, Caio, Nina, Rafa, Marina e Théo" width="1600" height="876" loading="lazy"></figure>
     <div class="team">
-      <article class="agent rv">
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Lívia faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-livia.jpg" alt="Lívia" width="900" height="900" loading="lazy"><div class="top"><div><h3>Lívia</h3><div class="role">Relatórios e auditoria</div></div></div>
-        <p class="does">Monta o relatório da semana e faz a auditoria de 15 pontos em cada conta.</p>
+        <p class="does">Monta o relatório da semana e faz a auditoria de 15 pontos em cada&nbsp;conta.</p>
         <div class="ask"><b>Peça:</b> "monta o relatório da semana"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">Segunda, 9h. Você abre o Claude, digita "monta o relatório da semana" e, em minutos, o relatório do cliente está pronto. Os guias mostram como instalar e usar cada relatório: infoproduto, WhatsApp, leads, a auditoria de 15 pontos e o resumo que você manda pro cliente.</p>
-        </details>
-      </article>
-      <article class="agent rv">
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Relatórios e auditoria</span>
+          <h3>Lívia</h3>
+          <p class="learn">Segunda, 9h. Você abre o Claude, digita "monta o relatório da semana" e, em minutos, o relatório do cliente está pronto. Os guias mostram como instalar e usar cada relatório: infoproduto, WhatsApp, leads, a auditoria de 15 pontos e o resumo que você manda pro&nbsp;cliente.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Caio faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-caio.jpg" alt="Caio" width="900" height="900" loading="lazy"><div class="top"><div><h3>Caio</h3><div class="role">Estrutura e subida</div></div></div>
-        <p class="does">Monta a estrutura da campanha, define públicos e posicionamentos e confere o orçamento antes de publicar.</p>
+        <p class="does">Monta a estrutura da campanha, define públicos e posicionamentos e confere o orçamento antes de&nbsp;publicar.</p>
         <div class="ask"><b>Peça:</b> "monta a estrutura de campanha de leads"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">Antes de subir qualquer campanha, a pergunta é: está tudo no lugar? A Caio tem o guia que responde isso passo a passo, da estrutura de infoproduto, WhatsApp local ou leads até a conferência de públicos, orçamento e o checklist antes de ativar.</p>
-        </details>
-      </article>
-      <article class="agent rv">
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Estrutura e subida</span>
+          <h3>Caio</h3>
+          <p class="learn">Antes de subir qualquer campanha, a pergunta é: está tudo no lugar? A Caio tem o guia que responde isso passo a passo, da estrutura de infoproduto, WhatsApp local ou leads até a conferência de públicos, orçamento e o checklist antes de&nbsp;ativar.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Nina faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-nina.jpg" alt="Nina" width="900" height="900" loading="lazy"><div class="top"><div><h3>Nina</h3><div class="role">Criativos e copy</div></div></div>
-        <p class="does">Faz briefing, roteiro, hook e copy de anúncio com ângulo, gancho e CTA estruturados.</p>
+        <p class="does">Faz briefing, roteiro, hook e copy de anúncio com ângulo, gancho e CTA&nbsp;estruturados.</p>
         <div class="ask"><b>Peça:</b> "briefing de criativo pra clínica, vídeo de 30s"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">Ninguém cria um anúncio bom em dez minutos. A Nina organiza o caminho: um briefing claro, roteiros de Reels e UGC, três variações de copy e hooks por nicho. Os guias ensinam a usar cada uma sem começar do zero a cada criativo.</p>
-        </details>
-      </article>
-      <article class="agent rv">
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Criativos e copy</span>
+          <h3>Nina</h3>
+          <p class="learn">Ninguém cria um anúncio bom em dez minutos. A Nina organiza o caminho: um briefing claro, roteiros de Reels e UGC, três variações de copy e hooks por nicho. Os guias ensinam a usar cada uma sem começar do zero a cada&nbsp;criativo.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Rafa faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-rafa.jpg" alt="Rafa" width="900" height="900" loading="lazy"><div class="top"><div><h3>Rafa</h3><div class="role">Tracking</div></div></div>
-        <p class="does">Confere Pixel, API de Conversões, eventos, UTMs e a landing antes de você subir a campanha.</p>
+        <p class="does">Confere Pixel, API de Conversões, eventos, UTMs e a landing antes de você subir a&nbsp;campanha.</p>
         <div class="ask"><b>Peça:</b> "confere o tracking dessa landing"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">O Pixel dispara, mas o evento de compra chega mesmo? O Rafa mostra, em guias curtos, como montar o checklist de Pixel e API de Conversões, organizar as UTMs da agência e rodar o diagnóstico de eventos antes de escalar.</p>
-        </details>
-      </article>
-      <article class="agent rv">
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Tracking</span>
+          <h3>Rafa</h3>
+          <p class="learn">O Pixel dispara, mas o evento de compra chega mesmo? O Rafa mostra, em guias curtos, como montar o checklist de Pixel e API de Conversões, organizar as UTMs da agência e rodar o diagnóstico de eventos antes de&nbsp;escalar.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Marina faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-marina.jpg" alt="Marina" width="900" height="900" loading="lazy"><div class="top"><div><h3>Marina</h3><div class="role">Operação de agência</div></div></div>
-        <p class="does">Prepara o onboarding, a reunião mensal, a rotina diária de otimização e o reajuste de verba e proposta quando você pede.</p>
+        <p class="does">Prepara o onboarding, a reunião mensal, a rotina diária de otimização e o reajuste de verba e proposta quando você&nbsp;pede.</p>
         <div class="ask"><b>Peça:</b> "prepara a reunião mensal do cliente"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">Cliente novo, primeira reunião, pauta da semana. A Marina cuida da rotina da operação: onboarding, reunião mensal, otimização diária e reajuste de verba com proposta. Os guias ensinam a usar cada uma sem perder o fio da conta.</p>
-        </details>
-      </article>
-      <article class="agent rv">
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Operação de agência</span>
+          <h3>Marina</h3>
+          <p class="learn">Cliente novo, primeira reunião, pauta da semana. A Marina cuida da rotina da operação: onboarding, reunião mensal, otimização diária e reajuste de verba com proposta. Os guias ensinam a usar cada uma sem perder o fio da&nbsp;conta.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
+      <article class="agent rv flip" tabindex="0" role="button" aria-pressed="false" aria-label="Ver o que o Théo faz">
+      <div class="flip-inner">
+        <div class="face front">
+
         <img class="agent-photo" src="agentes/agent-theo.jpg" alt="Théo" width="900" height="900" loading="lazy"><div class="top"><div><h3>Théo</h3><div class="role">Decisão e escala</div></div></div>
-        <p class="does">Aplica as regras de pausar e escalar, desenha testes A/B e prepara o plano para datas sazonais.</p>
+        <p class="does">Aplica as regras de pausar e escalar, desenha testes A/B e prepara o plano para datas&nbsp;sazonais.</p>
         <div class="ask"><b>Peça:</b> "pauso ou mantenho esse conjunto?"</div>
-        <details><summary>Saber mais</summary>
-          <p class="learn">Gastou e ainda não vendeu. O que fazer? O Théo aplica as regras de pausar e escalar com um motivo escrito. Os guias ensinam a montar um teste A/B estruturado e o plano sazonal da Black Friday, para decidir com critério, não no feeling.</p>
-        </details>
-      </article>
+          <span class="flip-cue">Toque para ver o que ele faz</span>
+        </div>
+        <div class="face back">
+          <span class="role">Decisão e escala</span>
+          <h3>Théo</h3>
+          <p class="learn">Gastou e ainda não vendeu. O que fazer? O Théo aplica as regras de pausar e escalar com um motivo escrito. Os guias ensinam a montar um teste A/B estruturado e o plano sazonal da Black Friday, para decidir com critério, não no&nbsp;feeling.</p>
+          <span class="flip-hint">Toque para voltar</span>
+        </div>
+      </div>
+    </article>
     </div>
     <p class="team-note">Agentes ilustrados. São personagens que organizam as Skills, não pessoas reais.</p>
     <div class="mid">
@@ -717,7 +788,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <h2>A IA ajuda. Quem decide continua sendo você.</h2>
     </div>
     <div class="tiles">
-      <div class="tile"><span class="ic"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Análise só lê</h3><p>Relatório e auditoria nunca alteram nada na conta.</p></div></div>
+      <div class="tile"><span class="ic"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span><div><h3>Análise só lê</h3><p>Relatório e auditoria nunca alteram nada na&nbsp;conta.</p></div></div>
       <div class="tile"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></span><div><h3>Campanha nasce pausada</h3><p>Nada vai ao ar sem a sua revisão.</p></div></div>
       <div class="tile"><span class="ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg></span><div><h3>Com ou sem conector</h3><p>Lê direto da conta ou trabalha com o que você colar.</p></div></div>
       <div class="tile"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><div><h3>Checklist antes de publicar</h3><p>Localização, orçamento, evento e posicionamento revisados.</p></div></div>
@@ -837,7 +908,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="final bt">
   <div class="wrap">
     <h2>Tenha uma equipe de tráfego pago à mão <span class="hl">hoje</span>. Seu próximo relatório sai em minutos.</h2>
-    <p>30 Skills, 6 agentes, guias de instalação e exemplos. Pagamento único, com 7 dias pra testar.</p>
+    <p>30 Skills, 6 agentes, aulas gravadas ensinando a usar os agentes e exemplos. Pagamento único, com 7 dias pra testar.</p>
     <div class="cta-wrap">
       <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
     </div>
@@ -1069,6 +1140,20 @@ document.documentElement.classList.add('js');
   stage.addEventListener('pointercancel', end);
   apply(false);
 })();
+/* agentes: clique ou Enter gira o card para mostrar a história */
+(function(){
+  document.querySelectorAll('.flip').forEach(function(el){
+    function toggle(){
+      var on = el.classList.toggle('on');
+      el.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+})();
+
 /* fluxo "como funciona": acende os passos em sequência ao entrar na tela */
 (function(){
   var f = document.getElementById('flow');
