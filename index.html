@@ -194,21 +194,22 @@ h1,h2,h3,h4{text-wrap:balance}
 .sheet-table thead th.yes-h{color:var(--orange)}
 .sheet-table td{padding:14px 16px;border-top:1px solid var(--dark-line);vertical-align:top;color:#fff}
 .sheet-table td.num{font-family:var(--mono);font-size:.78rem;color:#4f5d66;width:44px;text-align:center;background:#0b1620}
-.sheet-table td.pt{font-weight:700;width:18%}
+.sheet-table td.pt{font-weight:700;width:22%}
 .sheet-table td.no{color:var(--dark-muted)}
 .sheet-table td.yes{color:#fff;background:rgba(244,110,23,.06)}
-.sheet-table td.adv{color:#ffb36b}
 .sheet-table tbody tr:hover td:not(.num){background:rgba(255,255,255,.03)}
+.mk{display:inline-block;font-family:var(--mono);font-size:.7rem;font-weight:700;border-radius:6px;padding:2px 6px;margin-right:8px;vertical-align:1px}
+.mk.x{background:#2a1a1a;color:#ff6b6b}
+.mk.ok{background:rgba(244,110,23,.18);color:var(--orange)}
 @media(max-width:680px){
-  .sheet-table thead,.sheet-table .cols{display:none}
-  .sheet-table,.sheet-table tbody,.sheet-table tr{display:block;width:100%}
-  .sheet-table tr{border-top:1px solid var(--dark-line);padding:10px 0}
-  .sheet-table tr:first-child{border-top:0}
-  .sheet-table td{display:block;border:0;padding:6px 18px;background:none}
+  .sheet-table{font-size:.8rem}
+  .sheet-table td,.sheet-table thead th{padding:12px 10px}
+  .sheet-table thead th{font-size:.6rem;letter-spacing:.02em}
+  .sheet-table td.pt{font-size:.86rem}
+  .sheet-table .cols,.sheet-table td.num,.sheet-table thead th:first-child{display:none}
   .sheet-table td.num{display:none}
-  .sheet-table td.pt{width:auto;font-size:1.02rem;padding-top:14px}
-  .sheet-table td.yes{background:none}
-  .sheet-table td[data-label]::before{content:attr(data-label);display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dark-muted);margin-bottom:2px}
+  .sheet-table td.pt{width:30%}
+  .sheet-table .mk{display:block;width:max-content;margin:0 0 6px}
 }
 
 /* demo com abas */
@@ -556,17 +557,17 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     <div class="sheet">
       <table class="sheet-table">
         <thead>
-          <tr class="cols"><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr>
-          <tr><th>#</th><th>Tarefa</th><th class="no-h">Gestor sem IA</th><th class="yes-h">Gestor com a equipe de IA</th><th>Vantagem</th></tr>
+          <tr class="cols"><th></th><th>A</th><th>B</th><th>C</th></tr>
+          <tr><th>#</th><th>Tarefa</th><th class="no-h">Gestor sem IA</th><th class="yes-h">Gestor com a equipe de IA</th></tr>
         </thead>
         <tbody>
-          <tr><td class="num">1</td><td class="pt" data-label="Tarefa">Relatório da semana</td><td class="no" data-label="Sem IA">Monta na mão, copiando número por número</td><td class="yes" data-label="Com IA">Uma frase e o relatório sai no mesmo padrão</td><td class="adv" data-label="Vantagem">Horas economizadas toda semana</td></tr>
-          <tr><td class="num">2</td><td class="pt" data-label="Tarefa">Auditoria da conta</td><td class="no" data-label="Sem IA">Confere de memória, e sempre falta um ponto</td><td class="yes" data-label="Com IA">15 pontos checados toda vez que você pede</td><td class="adv" data-label="Vantagem">Menos erro de configuração</td></tr>
-          <tr><td class="num">3</td><td class="pt" data-label="Tarefa">Criativo e copy</td><td class="no" data-label="Sem IA">Briefing e copy sem padrão, muda a cada vez</td><td class="yes" data-label="Com IA">Ângulo, gancho e CTA estruturados</td><td class="adv" data-label="Vantagem">Mais testes com menos retrabalho</td></tr>
-          <tr><td class="num">4</td><td class="pt" data-label="Tarefa">Tracking</td><td class="no" data-label="Sem IA">Acha o furo no Pixel com o CPA já alto</td><td class="yes" data-label="Com IA">Checklist de Pixel e API antes de escalar</td><td class="adv" data-label="Vantagem">Problema corrigido antes de gastar</td></tr>
-          <tr><td class="num">5</td><td class="pt" data-label="Tarefa">Pausar ou escalar</td><td class="no" data-label="Sem IA">Decide no feeling do dia</td><td class="yes" data-label="Com IA">Critério claro, com o motivo escrito</td><td class="adv" data-label="Vantagem">Decisão que dá pra explicar ao cliente</td></tr>
-          <tr><td class="num">6</td><td class="pt" data-label="Tarefa">Reunião com o cliente</td><td class="no" data-label="Sem IA">Resumo escrito do zero, sem padrão</td><td class="yes" data-label="Com IA">Pauta e resumo em linguagem simples</td><td class="adv" data-label="Vantagem">Reunião pronta em minutos</td></tr>
-          <tr><td class="num">7</td><td class="pt" data-label="Tarefa">Conversa com a IA</td><td class="no" data-label="Sem IA">Reescreve o prompt gigante toda vez</td><td class="yes" data-label="Com IA">Frase curta, o método já está pronto</td><td class="adv" data-label="Vantagem">Sem explicar tudo de novo</td></tr>
+          <tr><td class="num">1</td><td class="pt" data-label="Tarefa">Relatório da semana</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Monta na mão, número por número</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Uma frase e o relatório sai no padrão</td></tr>
+          <tr><td class="num">2</td><td class="pt" data-label="Tarefa">Auditoria da conta</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Confere de memória, sempre falta um ponto</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>15 pontos checados toda vez que você pede</td></tr>
+          <tr><td class="num">3</td><td class="pt" data-label="Tarefa">Criativo e copy</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Briefing e copy sem padrão</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Ângulo, gancho e CTA estruturados</td></tr>
+          <tr><td class="num">4</td><td class="pt" data-label="Tarefa">Tracking</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Acha o furo no Pixel com o CPA já alto</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Checklist de Pixel e API antes de escalar</td></tr>
+          <tr><td class="num">5</td><td class="pt" data-label="Tarefa">Pausar ou escalar</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Decide no feeling do dia</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Critério claro, com o motivo escrito</td></tr>
+          <tr><td class="num">6</td><td class="pt" data-label="Tarefa">Reunião com o cliente</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Resumo do zero, sem padrão</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Pauta e resumo em linguagem simples</td></tr>
+          <tr><td class="num">7</td><td class="pt" data-label="Tarefa">Conversa com a IA</td><td class="no" data-label="Sem IA"><span class="mk x">X</span>Reescreve o prompt gigante toda vez</td><td class="yes" data-label="Com IA"><span class="mk ok">OK</span>Frase curta, o método já está pronto</td></tr>
         </tbody>
       </table>
     </div>
