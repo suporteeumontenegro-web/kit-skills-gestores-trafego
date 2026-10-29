@@ -246,6 +246,10 @@ h1,h2,h3,h4{text-wrap:balance}
 @media(max-width:620px){.author{grid-template-columns:1fr;text-align:left}}
 .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:50% 40%;display:block;border:3px solid #fff;box-shadow:0 10px 24px -12px rgba(10,37,64,.55)}
 .avatar::after{content:"";position:absolute;right:2px;bottom:6px;width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid var(--surface)}
+.ph{position:relative;width:260px;height:260px;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 10px 24px -12px rgba(10,37,64,.55);flex:none}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.4);transform-origin:50% 56%}
+.ph::after{content:"";position:absolute;right:34px;bottom:30px;width:22px;height:22px;border-radius:50%;background:var(--orange);border:3px solid var(--surface)}
+@media(max-width:620px){.ph{width:200px;height:200px}}
 .author .kicker{margin-bottom:6px}
 .author h3{font-size:1.4rem;margin-bottom:10px}
 .author p{font-size:.98rem}
@@ -695,10 +699,10 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="bt">
   <div class="wrap">
     <div class="author rv">
-      <img class="avatar" src="agentes/autor-wandey.jpg" alt="Wandey Montenegro" width="600" height="600" loading="lazy">
+      <div class="ph"><img src="agentes/autor-wandey.jpg" alt="Wandey Montenegro" width="600" height="600" loading="lazy"></div>
       <div>
         <h3>Wandey Montenegro</h3>
-        <p>Gestor de tráfego e fundador da The Mont .HUB. As Skills saíram da rotina real de operar contas de infoproduto, WhatsApp e geração de leads: os mesmos critérios de auditoria, os mesmos relatórios e as mesmas regras de decisão usados com os clientes da agência.</p>
+        <p>Sou Wandey Montenegro, gestor de tráfego pago com IA e fundador da The Mont .HUB. Tenho 3 anos de mercado, já gerenciei campanhas para mais de 50 empresas e criei sistemas completos para clientes. Uno anúncios, rastreamento e tecnologia para transformar investimento em venda.</p>
       </div>
     </div>
   </div>
