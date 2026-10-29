@@ -110,6 +110,25 @@ p{margin:0;color:var(--muted)}
 .step p{font-size:.94rem}
 .step .say{display:block;margin-top:12px;font-family:var(--mono);font-size:.8rem;color:var(--orange-text);background:#fff;border:1px dashed #F2C9A8;border-radius:10px;padding:9px 11px}
 
+/* quebra de linha: evita palavra solta no fim do texto */
+p,li,summary,figcaption,.say,.lede,.ba-row>div{text-wrap:pretty}
+h1,h2,h3,h4{text-wrap:balance}
+
+/* fluxo: passos centralizados que acendem em sequência */
+.flow{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.flow::before,.flow::after{content:"";position:absolute;top:25px;height:2px;border-radius:2px}
+.flow::before{left:12.5%;right:12.5%;background:var(--line)}
+.flow::after{left:12.5%;width:0;background:linear-gradient(90deg,var(--orange),#ffb36b);transition:width 2.4s ease .2s}
+.flow.go::after{width:75%}
+.flow .step{background:none;border:0;padding:0 6px;transform:none}
+.flow .step:hover{transform:none;border:0}
+.flow .step .n{position:relative;z-index:1;width:52px;height:52px;margin:0 auto;background:#fff;color:var(--muted-2);border:2px solid var(--line);font-size:1rem;transition:background .5s,color .5s,border-color .5s,box-shadow .5s;transition-delay:calc(var(--i) * .6s)}
+.flow.go .step .n{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 0 0 8px rgba(255,122,26,.15),0 0 28px rgba(255,122,26,.55)}
+.flow .step h3{margin:18px 0 8px;font-size:1.2rem}
+.flow .step p{max-width:270px;margin:0 auto;font-size:.94rem}
+.flow .step .say{display:inline-block;margin:12px auto 0}
+@media(max-width:860px){.flow{grid-template-columns:1fr;gap:34px}.flow::before,.flow::after{display:none}}
+
 /* equipe de agentes */
 .team-photo{margin:0 0 36px}
 .team-photo img{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line)}
@@ -389,7 +408,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
 
     <div class="console anim-up d2" aria-label="Exemplo ao vivo: agentes respondendo pedidos">
-      <div class="c-bar"><i></i><i></i><i></i><span>equipe-skills</span><span class="live">exemplo</span></div>
+      <div class="c-bar"><i></i><i></i><i></i><span>Equipe-Tráfego-Pago</span><span class="live">exemplo</span></div>
       <div class="crew" id="crew">
         <button class="ag" type="button" data-name="Lívia"><img class="ag-img" src="agentes/agent-livia.jpg" alt="" width="900" height="900" loading="lazy">Lívia</button>
         <button class="ag" type="button" data-name="Caio"><img class="ag-img" src="agentes/agent-caio.jpg" alt="" width="900" height="900" loading="lazy">Caio</button>
@@ -409,40 +428,29 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <div class="stats">
-    <div class="wrap">
-      <div class="c"><b>30</b><span>Skills prontas</span></div>
-      <div class="c"><b>6</b><span>Agentes especialistas</span></div>
-      <div class="c"><b>2</b><span>Cenários: infoproduto e negócio local</span></div>
-      <div class="c"><b>2</b><span>Modos: conector ou manual</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- COMO FUNCIONA -->
 <section class="bt" style="background:var(--surface)">
   <div class="wrap">
-    <div class="head">
-      <h2>Instala uma vez. Depois é só pedir.</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
+    <div class="flow" id="flow">
+      <div class="step" style="--i:0">
         <span class="n">1</span>
         <h3>Instale</h3>
         <p>Copie a pasta de Skills para o lugar certo. O guia de 3 passos mostra o caminho para Claude.ai, Desktop ou Code.</p>
       </div>
-      <div class="step">
+      <div class="step" style="--i:1">
         <span class="n">2</span>
         <h3>Peça em português</h3>
         <p>Diga o que precisa, com a conta ou os dados na mão. A Skill certa é acionada pelo seu pedido.</p>
         <span class="say">"roda a auditoria dessa conta"</span>
       </div>
-      <div class="step">
+      <div class="step" style="--i:2">
         <span class="n">3</span>
         <h3>Revise e aprove</h3>
         <p>Análises só leem a conta. Campanhas nascem pausadas, e nada vai ao ar sem a sua revisão.</p>
       </div>
-      <div class="step">
+      <div class="step" style="--i:3">
         <span class="n">4</span>
         <h3>Programe o relatório</h3>
         <p>Com o conector da Meta, você agenda o relatório do cliente pra rodar na nuvem no dia e no horário que definir.</p>
@@ -1049,6 +1057,17 @@ document.documentElement.classList.add('js');
   }, { passive: true });
 
   go(0); start();
+})();
+
+/* fluxo "como funciona": acende os passos em sequência ao entrar na tela */
+(function(){
+  var f = document.getElementById('flow');
+  if (!f) return;
+  if (!('IntersectionObserver' in window)) { f.classList.add('go'); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ f.classList.add('go'); io.disconnect(); } });
+  }, { threshold: .35 });
+  io.observe(f);
 })();
 </script>
 </body>
