@@ -135,16 +135,29 @@ p{margin:0;color:var(--muted)}
 .agent li:first-child{border-top:0}
 .team-note{text-align:center;margin-top:24px;font-size:.84rem;color:var(--muted-2)}
 
-/* relatórios reais */
-.reports{display:flex;flex-direction:column;max-width:1040px;margin:0 auto;padding-bottom:12px}
-.report{margin:0;position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 0;overflow:hidden;box-shadow:0 28px 50px -30px rgba(12,17,19,.45)}
-.report + .report{margin-top:-24px}
-.report figcaption{order:-1}
-.report img{width:100%;height:auto;display:block;border:0;border-radius:0}
-@media(max-width:600px){.report{padding:20px 18px 0}.report + .report{margin-top:28px}}
-.report .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--orange-text);margin-top:18px}
-.report figcaption p{margin-top:6px;font-size:.96rem;color:var(--muted)}
-.report figcaption b{color:var(--ink)}
+/* relatórios: livro 3D em vidro, rotativo */
+.book-sec{position:relative;overflow:hidden;color:#fff;background:radial-gradient(60% 50% at 12% 8%,rgba(255,122,26,.28),transparent 70%),radial-gradient(55% 55% at 92% 92%,rgba(60,140,255,.30),transparent 70%),#0a1424}
+.book-sec .head h2{color:#fff}
+.book-sec .head p{color:#b9c7e0}
+.book{position:relative;max-width:1040px;margin:0 auto}
+.stage3d{position:relative;height:500px;perspective:1800px;--R:430px}
+.ring{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.gl{position:absolute;left:50%;top:50%;width:min(560px,78vw);margin:0;padding:14px;border-radius:28px;overflow:hidden;transform:translate(-50%,-50%) rotateY(var(--a)) translateZ(var(--R));background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.05) 45%,rgba(255,255,255,.12));-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.35);box-shadow:0 40px 70px -30px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12);transition:box-shadow .6s}
+.gl::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.32) 45%,transparent 60%);transform:translateX(-100%);pointer-events:none;animation:sheen 6s ease-in-out infinite}
+@keyframes sheen{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.gl img{display:block;width:100%;height:auto;max-height:380px;object-fit:contain;border-radius:18px;box-shadow:0 14px 30px -18px rgba(0,0,0,.6)}
+.gl.is-front{box-shadow:0 40px 70px -30px rgba(0,0,0,.65),0 0 90px -20px rgba(255,122,26,.5),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12)}
+.book-info{max-width:720px;margin:26px auto 0;padding:18px 24px;text-align:center;border-radius:22px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.book-info .bk-tag{display:inline-block;background:none;border:0;padding:0;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--orange)}
+.book-info h3{margin:8px 0 6px;font-size:1.3rem;color:#fff}
+.book-info p{margin:0;font-size:.97rem;color:#b9c7e0;min-height:3.2em}
+.book-ctrl{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:20px}
+.book-ctrl .nav{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;font-size:22px;line-height:1;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.dots{display:flex;gap:8px}
+.dots button{width:9px;height:9px;padding:0;border:0;border-radius:99px;background:rgba(255,255,255,.35);cursor:pointer;transition:width .3s,background .3s}
+.dots button.on{width:26px;background:var(--orange)}
+@media(max-width:700px){.stage3d{height:430px;--R:250px}.gl{width:80vw;padding:10px;border-radius:22px}.gl img{max-height:300px}.book-info p{min-height:5.6em}}
+@media(prefers-reduced-motion:reduce){.ring{transition:none}.gl::before{animation:none;display:none}}
 .motion{margin:0 0 40px}
 .motion video{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line);background:#050d22}
 
@@ -653,35 +666,35 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 </section>
 
 <!-- RELATÓRIOS REAIS -->
-<section class="bt" style="background:var(--surface)" id="relatorios">
+<section class="book-sec" id="relatorios">
   <div class="wrap">
     <div class="head">
       <span class="kicker">Material real</span>
       <h2>Relatórios que a Lívia já entregou. Este é o padrão da sua entrega.</h2>
       <p>Três relatórios de contas reais de clientes. Nome do cliente e número da conta foram ocultados.</p>
     </div>
-    <div class="reports">
-      <figure class="report rv">
-        <img src="relatorios/relatorio-whatsapp-ctwa.png" alt="Relatório de diagnóstico de mídia paga com conversas no WhatsApp, orçamento por faixa etária e cartões de investimento, visitas e vendas" width="1177" height="942" loading="lazy">
-        <figcaption>
-          <span class="tag">Lívia · relatório de WhatsApp</span>
-          <p><b>Orçamento × resultado.</b> Mostra a fatia do orçamento que cada faixa de público recebeu contra a fatia de conversas que ela entregou, e onde o dinheiro está no lugar errado.</p>
-        </figcaption>
-      </figure>
-      <figure class="report rv">
-        <img src="relatorios/relatorio-leads-formulario.png" alt="Relatório de tráfego para leads com CPL por campanha, diagnóstico operacional e Opportunity Score" width="1887" height="937" loading="lazy">
-        <figcaption>
-          <span class="tag">Lívia · leads e auditoria</span>
-          <p><b>Custo por lead e saúde da conta.</b> Compara o CPL de cada campanha, aponta objetivo errado e falta de API de Conversões, e lista as ações que aumentam o Opportunity Score.</p>
-        </figcaption>
-      </figure>
-      <figure class="report rv">
-        <img src="relatorios/relatorio-conversas-whatsapp-instagram.png" alt="Relatório de conversas no WhatsApp e Instagram Direct com investimento semanal, funil de conversão e custo por resultado" width="1382" height="927" loading="lazy">
-        <figcaption>
-          <span class="tag">Lívia · relatório de conversas</span>
-          <p><b>Do alcance à conversa.</b> Funil completo com investimento semanal, custo por conversa e eficiência, para ver em que etapa a campanha perde pessoas.</p>
-        </figcaption>
-      </figure>
+    <div class="book">
+      <div class="stage3d" id="stage3d">
+        <div class="ring" id="ring">
+          <figure class="gl" style="--a:0deg"><img src="relatorios/relatorio-whatsapp-ctwa.png" alt="Relatório de diagnóstico de mídia paga com conversas no WhatsApp, orçamento por faixa etária e cartões de investimento, visitas e vendas" width="1177" height="942" loading="lazy"></figure>
+          <figure class="gl" style="--a:120deg"><img src="relatorios/relatorio-leads-formulario.png" alt="Relatório de tráfego para leads com CPL por campanha, diagnóstico operacional e Opportunity Score" width="1887" height="937" loading="lazy"></figure>
+          <figure class="gl" style="--a:240deg"><img src="relatorios/relatorio-conversas-whatsapp-instagram.png" alt="Relatório de conversas no WhatsApp e Instagram Direct com investimento semanal, funil de conversão e custo por resultado" width="1382" height="927" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="book-info">
+        <span class="bk-tag">Lívia · relatórios</span>
+        <h3 id="bi-title">Orçamento × resultado</h3>
+        <p id="bi-desc">Mostra a fatia do orçamento que cada faixa de público recebeu contra a fatia de conversas que ela entregou, e onde o dinheiro está no lugar errado.</p>
+      </div>
+      <div class="book-ctrl">
+        <button class="nav" id="prev" aria-label="Relatório anterior">‹</button>
+        <div class="dots" id="dots">
+          <button class="on" aria-label="Relatório 1"></button>
+          <button aria-label="Relatório 2"></button>
+          <button aria-label="Relatório 3"></button>
+        </div>
+        <button class="nav" id="next" aria-label="Próximo relatório">›</button>
+      </div>
     </div>
     <div class="mid">
       <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
@@ -1023,6 +1036,50 @@ document.documentElement.classList.add('js');
   function upd(){ s.classList.toggle('show', !heroVisible && !offerVisible); }
   new IntersectionObserver(function(e){ heroVisible = e[0].isIntersecting; upd(); }).observe(hero);
   new IntersectionObserver(function(e){ offerVisible = e[0].isIntersecting; upd(); }, {threshold:.2}).observe(offer);
+})();
+
+/* livro de relatórios: rotação 3D */
+(function(){
+  var items = [
+    { t: 'Orçamento × resultado', d: 'Mostra a fatia do orçamento que cada faixa de público recebeu contra a fatia de conversas que ela entregou, e onde o dinheiro está no lugar errado.' },
+    { t: 'Custo por lead e saúde da conta', d: 'Compara o CPL de cada campanha, aponta objetivo errado e falta de API de Conversões, e lista as ações que aumentam o Opportunity Score.' },
+    { t: 'Do alcance à conversa', d: 'Funil completo com investimento semanal, custo por conversa e eficiência, para ver em que etapa a campanha perde pessoas.' }
+  ];
+  var ring = document.getElementById('ring');
+  var cards = ring.querySelectorAll('.gl');
+  var dots = document.querySelectorAll('#dots button');
+  var ti = document.getElementById('bi-title'), di = document.getElementById('bi-desc');
+  var book = document.querySelector('.book');
+  var idx = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function go(n){
+    idx = (n + items.length) % items.length;
+    ring.style.transform = 'rotateY(' + (-idx * 120) + 'deg)';
+    cards.forEach(function(c, i){ c.classList.toggle('is-front', i === idx); });
+    dots.forEach(function(d, i){ d.classList.toggle('on', i === idx); });
+    ti.textContent = items[idx].t;
+    di.textContent = items[idx].d;
+  }
+  function stop(){ clearInterval(timer); }
+  function start(){ if (reduce) return; stop(); timer = setInterval(function(){ go(idx + 1); }, 5000); }
+
+  document.getElementById('next').addEventListener('click', function(){ go(idx + 1); start(); });
+  document.getElementById('prev').addEventListener('click', function(){ go(idx - 1); start(); });
+  dots.forEach(function(d, i){ d.addEventListener('click', function(){ go(i); start(); }); });
+  book.addEventListener('mouseenter', stop);
+  book.addEventListener('mouseleave', start);
+
+  var x0 = null;
+  book.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, { passive: true });
+  book.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40){ go(idx + (dx < 0 ? 1 : -1)); start(); }
+    x0 = null;
+  }, { passive: true });
+
+  go(0); start();
 })();
 </script>
 </body>
