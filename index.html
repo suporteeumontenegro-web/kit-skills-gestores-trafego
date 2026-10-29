@@ -135,6 +135,16 @@ p{margin:0;color:var(--muted)}
 .agent li:first-child{border-top:0}
 .team-note{text-align:center;margin-top:24px;font-size:.84rem;color:var(--muted-2)}
 
+/* relatórios reais */
+.reports{display:grid;gap:44px;max-width:1040px;margin:0 auto}
+.report{margin:0}
+.report img{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line);background:#fff}
+.report .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--orange-text);margin-top:18px}
+.report figcaption p{margin-top:6px;font-size:.96rem;color:var(--muted)}
+.report figcaption b{color:var(--ink)}
+.motion{margin:0 0 40px}
+.motion video{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line);background:#050d22}
+
 /* antes / depois */
 .ba{max-width:880px;margin:0 auto;border:1px solid var(--dark-line);border-radius:18px;overflow:hidden}
 .ba-row{display:grid;grid-template-columns:1fr 1fr}
@@ -546,6 +556,9 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       <h2>Você pede numa frase. O agente entrega pronto.</h2>
       <p>Toque nas abas e veja o formato de saída de cada agente.</p>
     </div>
+    <figure class="motion rv">
+      <video src="videos/agentes-trabalhando.mp4" poster="videos/agentes-trabalhando-poster.jpg" autoplay muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Animação: a equipe recebe um pedido em uma frase e entrega o resultado pronto"></video>
+    </figure>
     <div class="demo rv">
       <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-p="p1"><img class="av xs" src="agentes/avatar-livia.jpg" alt="" width="320" height="320" loading="lazy">Lívia</button>
@@ -633,6 +646,43 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
       </div>
     </div>
     <p class="note">Exemplos com dados fictícios, só pra mostrar o formato de saída.</p>
+  </div>
+</section>
+
+<!-- RELATÓRIOS REAIS -->
+<section class="bt" style="background:var(--surface)" id="relatorios">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Material real</span>
+      <h2>Relatórios que a Lívia já entregou. Este é o padrão da sua entrega.</h2>
+      <p>Três relatórios de contas reais de clientes. Nome do cliente, número da conta e valores foram ocultados.</p>
+    </div>
+    <div class="reports">
+      <figure class="report rv">
+        <img src="relatorios/relatorio-whatsapp-ctwa.png" alt="Relatório de diagnóstico de mídia paga com conversas no WhatsApp, orçamento por faixa etária e cartões de investimento, visitas e vendas" width="1177" height="942" loading="lazy">
+        <figcaption>
+          <span class="tag">Lívia · relatório de WhatsApp</span>
+          <p><b>Orçamento × resultado.</b> Mostra a fatia do orçamento que cada faixa de público recebeu contra a fatia de conversas que ela entregou, e onde o dinheiro está no lugar errado.</p>
+        </figcaption>
+      </figure>
+      <figure class="report rv">
+        <img src="relatorios/relatorio-leads-formulario.png" alt="Relatório de tráfego para leads com CPL por campanha, diagnóstico operacional e Opportunity Score" width="1887" height="937" loading="lazy">
+        <figcaption>
+          <span class="tag">Lívia · leads e auditoria</span>
+          <p><b>Custo por lead e saúde da conta.</b> Compara o CPL de cada campanha, aponta objetivo errado e falta de API de Conversões, e lista as ações que aumentam o Opportunity Score.</p>
+        </figcaption>
+      </figure>
+      <figure class="report rv">
+        <img src="relatorios/relatorio-conversas-whatsapp-instagram.png" alt="Relatório de conversas no WhatsApp e Instagram Direct com investimento semanal, funil de conversão e custo por resultado" width="1382" height="927" loading="lazy">
+        <figcaption>
+          <span class="tag">Lívia · relatório de conversas</span>
+          <p><b>Do alcance à conversa.</b> Funil completo com investimento semanal, custo por conversa e eficiência, para ver em que etapa a campanha perde pessoas.</p>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="mid">
+      <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+    </div>
   </div>
 </section>
 
