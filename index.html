@@ -160,15 +160,15 @@ h1,h2,h3,h4{text-wrap:balance}
 .book-sec .head h2{color:#fff}
 .book-sec .head p{color:#b9c7e0}
 .book{position:relative;max-width:1040px;margin:0 auto}
-.stage3d{position:relative;height:500px;touch-action:pan-y;user-select:none;-webkit-user-select:none}
-.track{position:absolute;inset:0}
-.gl{position:absolute;left:50%;top:50%;width:min(560px,78vw);margin:0;padding:14px;border-radius:28px;overflow:hidden;transform:translate(-50%,-50%);cursor:pointer;background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.05) 45%,rgba(255,255,255,.12));-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.35);box-shadow:0 40px 70px -30px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12);transition:transform .6s cubic-bezier(.2,.7,.2,1),opacity .6s,box-shadow .6s}
+.stage3d{position:relative;height:500px;perspective:1800px;--R:430px;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.ring{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.gl{position:absolute;left:50%;top:50%;width:min(560px,78vw);margin:0;padding:14px;border-radius:28px;overflow:hidden;transform:translate(-50%,-50%) rotateY(var(--a)) translateZ(var(--R));cursor:pointer;background:linear-gradient(135deg,rgba(255,255,255,.24),rgba(255,255,255,.05) 45%,rgba(255,255,255,.12));-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.35);box-shadow:0 40px 70px -30px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12);transition:box-shadow .6s}
 .gl::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.32) 45%,transparent 60%);transform:translateX(-100%);pointer-events:none;animation:sheen 6s ease-in-out infinite}
 @keyframes sheen{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .gl img{display:block;width:100%;height:auto;max-height:380px;object-fit:contain;border-radius:18px;box-shadow:0 14px 30px -18px rgba(0,0,0,.6)}
 .gl.is-front{box-shadow:0 40px 70px -30px rgba(0,0,0,.65),0 0 90px -20px rgba(255,122,26,.5),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12)}
-@media(max-width:700px){.stage3d{height:430px}.gl{width:80vw;padding:10px;border-radius:22px}.gl img{max-height:300px}}
-@media(prefers-reduced-motion:reduce){.gl{transition:none}.gl::before{animation:none;display:none}}
+@media(max-width:700px){.stage3d{height:430px;--R:250px}.gl{width:80vw;padding:10px;border-radius:22px}.gl img{max-height:300px}}
+@media(prefers-reduced-motion:reduce){.ring{transition:none}.gl::before{animation:none;display:none}}
 .motion{margin:0 0 40px}
 .motion video{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line);background:#050d22}
 
@@ -678,10 +678,10 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     </div>
     <div class="book">
       <div class="stage3d" id="stage3d">
-        <div class="track" id="track">
-          <figure class="gl"><img src="relatorios/relatorio-whatsapp-ctwa.png" alt="Relatório de diagnóstico de mídia paga com conversas no WhatsApp, orçamento por faixa etária e cartões de investimento, visitas e vendas" width="1177" height="942" loading="lazy"></figure>
-          <figure class="gl"><img src="relatorios/relatorio-leads-formulario.png" alt="Relatório de tráfego para leads com CPL por campanha, diagnóstico operacional e Opportunity Score" width="1887" height="937" loading="lazy"></figure>
-          <figure class="gl"><img src="relatorios/relatorio-conversas-whatsapp-instagram.png" alt="Relatório de conversas no WhatsApp e Instagram Direct com investimento semanal, funil de conversão e custo por resultado" width="1382" height="927" loading="lazy"></figure>
+        <div class="ring" id="ring">
+          <figure class="gl" style="--a:0deg"><img src="relatorios/relatorio-whatsapp-ctwa.png" alt="Relatório de diagnóstico de mídia paga com conversas no WhatsApp, orçamento por faixa etária e cartões de investimento, visitas e vendas" width="1177" height="942" loading="lazy"></figure>
+          <figure class="gl" style="--a:120deg"><img src="relatorios/relatorio-leads-formulario.png" alt="Relatório de tráfego para leads com CPL por campanha, diagnóstico operacional e Opportunity Score" width="1887" height="937" loading="lazy"></figure>
+          <figure class="gl" style="--a:240deg"><img src="relatorios/relatorio-conversas-whatsapp-instagram.png" alt="Relatório de conversas no WhatsApp e Instagram Direct com investimento semanal, funil de conversão e custo por resultado" width="1382" height="927" loading="lazy"></figure>
         </div>
       </div>
     </div>
@@ -1012,53 +1012,48 @@ document.documentElement.classList.add('js');
 })();
 
 
-/* livro de relatórios: trilha arrastável, troca só por clique ou arrasto */
+/* livro de relatórios: anel 3D que gira só por clique ou arrasto, sem troca automática */
 (function(){
-  var track = document.getElementById('track');
-  if (!track) return;
-  var cards = [].slice.call(track.querySelectorAll('.gl'));
-  var idx = 0, dx = 0, sx = 0, dragging = false, moved = false;
-  function layout(){
-    var cw = cards[0].offsetWidth || 300, X = cw * 0.6;
-    cards.forEach(function(c, i){
-      var d = i - idx, ad = Math.abs(d);
-      var x = d * X + dx;
-      var s = ad === 0 ? 1 : (ad === 1 ? .82 : .6);
-      c.style.transform = 'translate(-50%,-50%) translateX(' + x + 'px) scale(' + s + ')';
-      c.style.opacity = ad === 0 ? 1 : (ad === 1 ? .5 : 0);
-      c.style.zIndex = 10 - ad;
-      c.style.pointerEvents = ad > 1 ? 'none' : '';
-      c.classList.toggle('is-front', d === 0);
-    });
+  var ring = document.getElementById('ring');
+  if (!ring) return;
+  var cards = [].slice.call(ring.querySelectorAll('.gl'));
+  var N = cards.length, STEP = 360 / N;
+  var idx = 0, rot = 0, sx = 0, startRot = 0, dragging = false, moved = false;
+  function setFront(){
+    cards.forEach(function(c, i){ c.classList.toggle('is-front', i === idx); });
   }
-  function go(n){ idx = Math.max(0, Math.min(cards.length - 1, n)); dx = 0; layout(); }
+  function go(n){
+    idx = Math.max(0, Math.min(N - 1, n));
+    rot = -idx * STEP;
+    ring.style.transition = '';
+    ring.style.transform = 'rotateY(' + rot + 'deg)';
+    setFront();
+  }
   cards.forEach(function(c, i){
     c.addEventListener('click', function(){ if (!moved && i !== idx) go(i); });
     c.addEventListener('dragstart', function(e){ e.preventDefault(); });
   });
-  track.addEventListener('pointerdown', function(e){
-    dragging = true; moved = false; sx = e.clientX; dx = 0;
-    cards.forEach(function(c){ c.style.transition = 'none'; });
-    track.setPointerCapture(e.pointerId);
+  var stage = document.getElementById('stage3d');
+  stage.addEventListener('pointerdown', function(e){
+    dragging = true; moved = false; sx = e.clientX; startRot = rot;
+    ring.style.transition = 'none';
+    stage.setPointerCapture(e.pointerId);
   });
-  track.addEventListener('pointermove', function(e){
+  stage.addEventListener('pointermove', function(e){
     if (!dragging) return;
-    dx = e.clientX - sx;
+    var dx = e.clientX - sx;
     if (Math.abs(dx) > 6) moved = true;
-    layout();
+    rot = startRot + dx * 0.3;
+    ring.style.transform = 'rotateY(' + rot + 'deg)';
   });
   function end(){
     if (!dragging) return;
     dragging = false;
-    cards.forEach(function(c){ c.style.transition = ''; });
-    var th = 60;
-    if (dx < -th && idx < cards.length - 1) go(idx + 1);
-    else if (dx > th && idx > 0) go(idx - 1);
-    else { dx = 0; layout(); }
+    var n = Math.round(-rot / STEP);
+    go(n);
   }
-  track.addEventListener('pointerup', end);
-  track.addEventListener('pointercancel', end);
-  window.addEventListener('resize', layout);
+  stage.addEventListener('pointerup', end);
+  stage.addEventListener('pointercancel', end);
   go(0);
 })();
 /* fluxo "como funciona": acende os passos em sequência ao entrar na tela */
