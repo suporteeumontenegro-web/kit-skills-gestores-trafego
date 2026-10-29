@@ -1018,25 +1018,32 @@ document.documentElement.classList.add('js');
 })();
 
 
-/* livro de relatórios: anel 3D que gira só por clique ou arrasto, sem troca automática */
+/* livro de relatórios: anel 3D contínuo, gira só por clique ou arrasto e dá a volta completa */
 (function(){
   var ring = document.getElementById('ring');
   if (!ring) return;
   var cards = [].slice.call(ring.querySelectorAll('.gl'));
   var N = cards.length, STEP = 360 / N;
-  var idx = 0, rot = 0, sx = 0, startRot = 0, dragging = false, moved = false;
+  var k = 0, rot = 0, sx = 0, startRot = 0, dragging = false, moved = false;
+  function mod(a){ return ((a % N) + N) % N; }
   function setFront(){
+    var idx = mod(k);
     cards.forEach(function(c, i){ c.classList.toggle('is-front', i === idx); });
   }
-  function go(n){
-    idx = Math.max(0, Math.min(N - 1, n));
-    rot = -idx * STEP;
-    ring.style.transition = '';
+  function apply(animate){
+    rot = -k * STEP;
+    ring.style.transition = animate ? '' : 'none';
     ring.style.transform = 'rotateY(' + rot + 'deg)';
     setFront();
   }
+  function goTo(i){
+    var d = mod(i - mod(k));
+    if (d > N / 2) d -= N;
+    k += d;
+    apply(true);
+  }
   cards.forEach(function(c, i){
-    c.addEventListener('click', function(){ if (!moved && i !== idx) go(i); });
+    c.addEventListener('click', function(){ if (!moved && i !== mod(k)) goTo(i); });
     c.addEventListener('dragstart', function(e){ e.preventDefault(); });
   });
   var stage = document.getElementById('stage3d');
@@ -1055,12 +1062,12 @@ document.documentElement.classList.add('js');
   function end(){
     if (!dragging) return;
     dragging = false;
-    var n = Math.round(-rot / STEP);
-    go(n);
+    k = Math.round(-rot / STEP);
+    apply(true);
   }
   stage.addEventListener('pointerup', end);
   stage.addEventListener('pointercancel', end);
-  go(0);
+  apply(false);
 })();
 /* fluxo "como funciona": acende os passos em sequência ao entrar na tela */
 (function(){
