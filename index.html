@@ -1142,10 +1142,18 @@ document.documentElement.classList.add('js');
 })();
 /* agentes: clique ou Enter gira o card para mostrar a história */
 (function(){
-  document.querySelectorAll('.flip').forEach(function(el){
+  var all = document.querySelectorAll('.flip');
+  all.forEach(function(el){
     function toggle(){
-      var on = el.classList.toggle('on');
-      el.setAttribute('aria-pressed', on ? 'true' : 'false');
+      var opening = !el.classList.contains('on');
+      all.forEach(function(other){
+        other.classList.remove('on');
+        other.setAttribute('aria-pressed', 'false');
+      });
+      if (opening){
+        el.classList.add('on');
+        el.setAttribute('aria-pressed', 'true');
+      }
     }
     el.addEventListener('click', toggle);
     el.addEventListener('keydown', function(e){
