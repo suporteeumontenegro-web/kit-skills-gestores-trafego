@@ -291,10 +291,6 @@ footer{border-top:1px solid var(--line);padding:36px 0 110px;text-align:center;f
 @media(min-width:861px){footer{padding-bottom:40px}}
 
 /* barra fixa no celular */
-.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;transform:translateY(140%);transition:transform .3s ease}
-.sticky.show{transform:none}
-.sticky .btn{width:100%;justify-content:space-between;box-shadow:0 16px 36px -12px rgba(10,37,64,.7)}
-@media(max-width:860px){.sticky{display:block}}
 
 /* revelação ao rolar */
 .js .rv{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
@@ -385,17 +381,10 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="kicker anim-up">Equipe de tráfego pago com Claude · Meta Ads</span>
       <h1 class="anim-up d1">Sua <em>equipe de tráfego pago</em> dentro do <em>Claude</em>, pronta na hora em que você chamar.</h1>
       <p class="lede anim-up d2">6 agentes e 30 Skills te ajudam em relatório, auditoria, campanha, criativo, tracking e decisão, para infoproduto e para negócio local. Você chama, pede em uma frase e recebe pronto em minutos, no mesmo padrão, toda vez. Quem decide continua sendo você.</p>
       <div class="cta-wrap anim-up d2">
-        <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn pulse" id="hero-cta">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
-        <p class="price-note">R$ 47 · pagamento único · sem mensalidade</p>
-      </div>
-      <div class="micro anim-up d3">
-        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Acesso imediato</span>
-        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Garantia de 7 dias</span>
-        <span><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Claude.ai, Desktop ou Code</span>
+        <a href="#oferta" class="btn pulse" id="hero-cta">Quero a minha equipe<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
       </div>
     </div>
 
@@ -434,7 +423,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="bt" style="background:var(--surface)">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Como funciona</span>
       <h2>Instala uma vez. Depois é só pedir.</h2>
     </div>
     <div class="steps">
@@ -468,7 +456,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="bt" id="equipe">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Conheça a equipe</span>
       <h2>Conheça a sua equipe de tráfego pago. Seis agentes, cada um na sua função.</h2>
       <p>Cada agente conhece as Skills da sua área. Você fala com ele pelo nome ou pede direto o que precisa.</p>
     </div>
@@ -534,7 +521,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="dark">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Sem o kit × com o kit</span>
       <h2>Você já sabe fazer. O que cansa é explicar tudo de novo pra IA.</h2>
       <p>Cada conversa nova com o Claude começa do zero. As Skills já trazem o método pronto: você chama e elas aplicam, sem precisar reescrever o prompt.</p>
     </div>
@@ -568,7 +554,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section id="dentro">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Veja por dentro</span>
       <h2>Você pede numa frase. O agente entrega pronto.</h2>
       <p>Toque nas abas e veja o formato de saída de cada agente.</p>
     </div>
@@ -617,7 +602,7 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
         <div class="out">
           <div class="out-h"><span class="ag-tag"><img class="av sm" src="agentes/avatar-nina.jpg" alt="Nina" width="320" height="320" loading="lazy">briefing-criativo</span><span class="tg">1 ângulo</span></div>
           <div class="r"><span>Ângulo</span><span>Resultado natural, sem exagero</span></div>
-          <div class="r"><span>Gancho 0–3s</span><span>"Ninguém percebeu que eu fiz"</span></div>
+          <div class="r"><span>Gancho 0 a 3s</span><span>"Ninguém percebeu que eu fiz"</span></div>
           <div class="r"><span>Formato</span><span>Vertical · 30s · depoimento</span></div>
           <div class="r"><span>CTA</span><span>Agendar avaliação no WhatsApp</span></div>
           <div class="r"><span>Evitar</span><span class="bad">Antes/depois sem comprovação</span></div>
@@ -669,7 +654,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="book-sec" id="relatorios">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Material real</span>
       <h2>Relatórios que a Lívia já entregou. Este é o padrão da sua entrega.</h2>
       <p>Três relatórios de contas reais de clientes. Nome do cliente e número da conta foram ocultados.</p>
     </div>
@@ -708,7 +692,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
     <div class="author rv">
       <img class="avatar" src="agentes/autor-wandey.jpg" alt="Wandey Montenegro" width="600" height="600" loading="lazy">
       <div>
-        <span class="kicker">Quem montou</span>
         <h3>Wandey Montenegro</h3>
         <p>Gestor de tráfego e fundador da The Mont .HUB. As Skills saíram da rotina real de operar contas de infoproduto, WhatsApp e geração de leads: os mesmos critérios de auditoria, os mesmos relatórios e as mesmas regras de decisão usados com os clientes da agência.</p>
       </div>
@@ -720,7 +703,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section class="dark">
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Feito pra conta de cliente</span>
       <h2>A IA ajuda. Quem decide continua sendo você.</h2>
     </div>
     <div class="tiles">
@@ -736,7 +718,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
 <section>
   <div class="wrap">
     <div class="head">
-      <span class="kicker">Pra quem é</span>
       <h2>Pra quem já roda tráfego no Meta e quer render mais.</h2>
     </div>
     <div class="who">
@@ -860,10 +841,6 @@ src="https://www.facebook.com/tr?id=282209364867121&ev=PageView&noscript=1"
   <div class="wrap">Um produto The Mont .HUB</div>
 </footer>
 
-<div class="sticky" id="sticky">
-  <a href="https://pay.kiwify.com.br/kP62VQ5" class="btn">Quero a equipe · R$ 47<span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
-</div>
-
 <script>
 (function(){
   var q = new URLSearchParams(location.search);
@@ -898,7 +875,7 @@ document.querySelectorAll('.tab').forEach(function(t){
       'Tudo nasce pausado: você revisa e ativa quando quiser.'] },
     { agent:'Nina', prompt:'briefing de criativo pra clínica de estética, vídeo de 30s', out:[
       'Ângulo: resultado natural, sem exagero.',
-      'Gancho 0–3s: "Ninguém percebeu que eu fiz".',
+      'Gancho 0 a 3s: "Ninguém percebeu que eu fiz".',
       'CTA: agendar avaliação no WhatsApp.'] },
     { agent:'Rafa', prompt:'confere o tracking dessa landing antes de subir a campanha', out:[
       'PageView disparando: OK.',
@@ -1029,14 +1006,6 @@ document.documentElement.classList.add('js');
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
 })();
 
-(function(){
-  var s = document.getElementById('sticky'), hero = document.getElementById('hero-cta'), offer = document.getElementById('oferta');
-  if (!('IntersectionObserver' in window)) { s.classList.add('show'); return; }
-  var heroVisible = true, offerVisible = false;
-  function upd(){ s.classList.toggle('show', !heroVisible && !offerVisible); }
-  new IntersectionObserver(function(e){ heroVisible = e[0].isIntersecting; upd(); }).observe(hero);
-  new IntersectionObserver(function(e){ offerVisible = e[0].isIntersecting; upd(); }, {threshold:.2}).observe(offer);
-})();
 
 /* livro de relatórios: rotação 3D */
 (function(){
